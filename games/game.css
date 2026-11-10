@@ -1,0 +1,7 @@
+html, body { height: 100%; margin: 0; background: #0b0c0e; color: #e8e3d8; font: 13px 'IBM Plex Mono', ui-monospace, monospace; overflow: hidden; }
+canvas { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; outline: none; }
+.over { position: fixed; inset: 0; display: grid; place-items: center; background: #0b0c0ecc; text-align: center; }
+.over[hidden] { display: none; }
+.over p { margin: 0 0 12px; font-size: 15px; }
+button { font: inherit; background: #d2492a; color: #fff; border: 0; border-radius: 99px; padding: 8px 18px; cursor: pointer; }
+button:focus-visible { outline: 3px solid #f3eee4; outline-offset: 2px; }

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; frame-src 'self'; child-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Dimitri Nguyen — du service en salle au service en prod</title>
+  <meta name="description" content="Dimitri Nguyen, développeur formé à 42 Lausanne : projets jouables et services en production, avec leur propre code.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e3241b'/%3E%3Ctext x='16' y='21.5' font-family='Helvetica,Arial' font-size='14' font-weight='900' text-anchor='middle' fill='%23fff'%3EDN%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/site.css?v=12e5eeaca9">
+  <script type="module" src="js/main.js?v=12e5eeaca9"></script>
+</head>
+<body>
+  <nav class="top" aria-label="Navigation">
+    <a class="brand" href="#top">Dimitri Nguyen</a>
+    <ol class="toc">
+      <li><a href="#st-resto"><span>01</span> <span data-i18n="toc.path">Parcours</span></a></li>
+      <li><a href="#st-pushswap"><span>03</span> <span data-i18n="toc.school">École 42</span></a></li>
+      <li><a href="#st-tracker"><span>09</span> <span data-i18n="toc.prod">En production</span></a></li>
+      <li><a href="#st-contact"><span>—</span> <span data-i18n="toc.contact">Contact</span></a></li>
+    </ol>
+    <button id="lang-toggle" type="button" data-i18n="lang.switch" data-i18n-aria="lang.switch.aria" aria-label="Switch to English" lang="en">EN</button>
+  </nav>
+
+  <main class="page" id="top">
+    <div class="rail" aria-hidden="true"><div class="track"></div><div class="fill" id="fill"></div></div>
+
+    <header class="hero wrap">
+      <p class="kicker" data-i18n="hero.kicker">Développeur · 42 Lausanne · Kepler Cheuvreux</p>
+      <h1><span data-i18n="hero.title1">Du service en salle</span><br><span data-i18n="hero.title2">au service</span> <em data-i18n="hero.title3">en prod.</em></h1>
+      <div class="disc" aria-hidden="true"><div class="photo initials" aria-hidden="true"><span>DN</span></div></div>
+      <div class="hero-foot">
+        <p class="intro" data-i18n="hero.intro"></p>
+        <ul class="facts">
+          <li><b>12</b><span data-i18n="facts.resto">ans en restauration</span></li>
+          <li><b>6/7</b><span data-i18n="facts.circles">cercles de 42 validés</span></li>
+          <li><b>2</b><span data-i18n="facts.prod">services en production</span></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track">
+      <span><svg><use href="img/tech.svg#c"/></svg>C</span><span><svg><use href="img/tech.svg#cplusplus"/></svg>C++</span><span><svg><use href="img/tech.svg#python"/></svg>Python</span><span><svg><use href="img/tech.svg#apacheairflow"/></svg>Airflow</span><span><svg><use href="img/tech.svg#postgresql"/></svg>PostgreSQL</span><span><svg><use href="img/tech.svg#docker"/></svg>Docker</span><span><svg><use href="img/tech.svg#n8n"/></svg>n8n</span><span><svg><use href="img/tech.svg#fastapi"/></svg>FastAPI</span><span><svg><use href="img/tech.svg#react"/></svg>React</span><span><svg><use href="img/tech.svg#nginx"/></svg>NGINX</span><span><svg><use href="img/tech.svg#linux"/></svg>Linux</span>
+      <span><svg><use href="img/tech.svg#c"/></svg>C</span><span><svg><use href="img/tech.svg#cplusplus"/></svg>C++</span><span><svg><use href="img/tech.svg#python"/></svg>Python</span><span><svg><use href="img/tech.svg#apacheairflow"/></svg>Airflow</span><span><svg><use href="img/tech.svg#postgresql"/></svg>PostgreSQL</span><span><svg><use href="img/tech.svg#docker"/></svg>Docker</span><span><svg><use href="img/tech.svg#n8n"/></svg>n8n</span><span><svg><use href="img/tech.svg#fastapi"/></svg>FastAPI</span><span><svg><use href="img/tech.svg#react"/></svg>React</span><span><svg><use href="img/tech.svg#nginx"/></svg>NGINX</span><span><svg><use href="img/tech.svg#linux"/></svg>Linux</span>
+    </div></div>
+
+    <section class="wrap index" aria-labelledby="h-index">
+      <h2 class="label" id="h-index">Index</h2>
+      <ol class="idx-list">
+        <li><a href="#st-pushswap"><span class="n">03</span><svg aria-hidden="true"><use href="img/projects.svg#pushswap"/></svg><b>Push_swap</b><span class="k">C · <span data-i18n="tag.algo">algorithmie</span></span><span class="g">125</span></a></li>
+        <li><a href="#st-solong"><span class="n">04</span><img src="img/so_long-player.png" alt="" width="32" height="32" class="pix"><b>So_long</b><span class="k">C · MiniLibX</span><span class="g">125</span></a></li>
+        <li><a href="#st-philo"><span class="n">05</span><svg aria-hidden="true"><use href="img/projects.svg#philo"/></svg><b>Philosophers</b><span class="k">C · threads</span><span class="g">100</span></a></li>
+        <li><a href="#st-minishell"><span class="n">06</span><svg aria-hidden="true"><use href="img/projects.svg#minishell"/></svg><b>Minishell</b><span class="k">C · fork · pipes</span><span class="g">125</span></a></li>
+        <li><a href="#st-cub3d"><span class="n">07</span><svg aria-hidden="true"><use href="img/projects.svg#cub3d"/></svg><b>Cub3D</b><span class="k">C · raycasting</span><span class="g">125</span></a></li>
+        <li><a href="#st-inception"><span class="n">08</span><svg aria-hidden="true"><use href="img/projects.svg#inception"/></svg><b>Inception</b><span class="k">Docker · NGINX</span><span class="g">125</span></a></li>
+        <li class="live"><a href="#st-tracker"><span class="n">09</span><svg aria-hidden="true"><use href="img/projects.svg#tracker"/></svg><b>card-price-tracker</b><span class="k">Python · Airflow</span><span class="g" data-i18n="ov.live">en production</span></a></li>
+        <li class="live"><a href="#st-annonces"><span class="n">10</span><svg aria-hidden="true"><use href="img/projects.svg#annonces"/></svg><b>annonces</b><span class="k">n8n · PostgreSQL</span><span class="g" data-i18n="ov.live">en production</span></a></li>
+      </ol>
+    </section>
+
+    <section class="stop wrap" id="st-resto" aria-labelledby="h-resto">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead"><span class="idx">01</span><div class="ptitle"><div class="date" data-i18n="resto.date">2012 — 2024</div><h2 id="h-resto" data-i18n="resto.title">Manager au Café du Simplon</h2></div></header>
+      <div class="era">
+        <div class="bignum">12<small data-i18n="resto.years">ans en restauration</small></div>
+        <div>
+          <div class="lede" data-i18n-html="resto.text"></div>
+          <ul class="tickets" aria-hidden="true">
+            <li class="ticket">TABLE 12<br>— — — —<br>2012<br><span data-i18n="resto.t1">premier service</span></li>
+            <li class="ticket">TABLE 14<br>— — — —<br>2014 → 2024<br><span data-i18n="resto.t2">manager</span></li>
+            <li class="ticket">TABLE 42<br>— — — —<br>10.2024<br><span data-i18n="resto.t3">nouvelle carte</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap" id="st-42" aria-labelledby="h-42">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead"><span class="idx">02</span><div class="ptitle"><div class="date" data-i18n="42.date">oct. 2024</div><h2 id="h-42" data-i18n="42.title">Entrée à 42 Lausanne</h2></div></header>
+      <div class="lede wide-lede" data-i18n-html="42.text"></div>
+    </section>
+
+    <section class="stop wrap proj" id="st-pushswap" aria-labelledby="h-pushswap">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">03</span>
+        <div class="ptitle"><h2 id="h-pushswap"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#pushswap"/></svg>Push_swap</h2><p class="quote" lang="en">“first algo / not last”</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="pushswap.date">déc. 2024 · cercle 2</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
+      </header>
+      <div class="project">
+        <div class="screen" data-visual="pushswap">
+          <div class="bar"><i></i><i></i><i></i><span data-i18n="ps.bar">push_swap + checker — mon code, exécuté dans votre navigateur</span></div>
+          <canvas width="640" height="360" role="img" data-i18n-aria="ps.aria" aria-label="Piles A et B pendant le tri"></canvas>
+          <div class="controls">
+            <button type="button" data-ps-size="100" data-i18n="ps.btn100">100 nombres</button>
+            <button type="button" data-ps-size="500" data-i18n="ps.btn500">500 nombres</button>
+            <button type="button" data-ps="replay" data-i18n="ps.replay">Rejouer</button>
+            <span data-ps="count"></span> <span data-ps="verdict" aria-live="polite"></span>
+          </div>
+        </div>
+        <div class="project-text">
+          <div class="body" data-i18n-html="pushswap.body"></div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#c"/></svg>C</li><li class="r" data-i18n="tag.algo">algorithmie</li><li data-i18n="tag.complexity">complexité</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/PUSH_SWAP" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap proj" id="st-solong" aria-labelledby="h-solong">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">04</span>
+        <div class="ptitle"><h2 id="h-solong"><img class="picon pix" src="img/so_long-player.png" alt="" width="32" height="32">So_long</h2><p class="quote" lang="en">“survived mlx. don't recommend”</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="solong.date">janv. 2025 · cercle 2</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
+      </header>
+      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=12e5eeaca9" data-game-aspect="1632 / 256" data-game-title="so_long">
+        <div class="bar"><i></i><i></i><i></i><span data-i18n="solong.bar">so_long — mon jeu, jouable dans votre navigateur</span></div>
+        <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/so_long.webp" alt="so_long : capture du jeu" width="1632" height="256"></div>
+        <div class="controls">
+          <button type="button" data-game="play" data-i18n="game.play">Jouer</button>
+          <button type="button" data-game-map="maps/test3_bonus.ber" aria-pressed="true" data-i18n="solong.map1">Carte avec ennemis</button>
+          <button type="button" data-game-map="maps/test2.ber" aria-pressed="false" data-i18n="solong.map2">Labyrinthe</button>
+          <button type="button" data-game-map="maps/test.ber" aria-pressed="false" data-i18n="solong.map3">Petite carte</button>
+          <span data-game="msg" aria-live="polite"></span>
+        </div>
+      </div>
+      <div class="project-text cols">
+        <div class="body" data-i18n-html="solong.body"></div>
+        <div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#c"/></svg>C</li><li>MiniLibX</li><li class="r" data-i18n="tag.game">jeu 2D</li><li data-i18n="tag.pathfinding">vérification de chemin</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/SO_LONG" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap proj" id="st-philo" aria-labelledby="h-philo">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">05</span>
+        <div class="ptitle"><h2 id="h-philo"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#philo"/></svg>Philosophers</h2><p class="quote" lang="en">“i think... ZzZzzzZ”</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="philo.date">févr. 2025 · cercle 3</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>100/100</dd></div></dl>
+      </header>
+      <div class="project">
+        <div class="screen" data-visual="philo">
+          <div class="bar"><i></i><i></i><i></i><span data-ph="args">./philo 5 800 200 200 7</span></div>
+          <div class="ph-grid">
+            <svg data-ph="table" viewBox="0 0 340 340" role="img" data-i18n-aria="ph.aria" aria-label="Table des philosophes rejouant une exécution réelle"></svg>
+            <div><p class="note" data-i18n="ph.logtitle">Sortie réelle du programme</p><ol class="ph-log" data-ph="log" aria-live="off"></ol></div>
+          </div>
+          <div class="controls">
+            <button type="button" data-ph-run="ok" aria-pressed="true" data-i18n="ph.run1">Personne ne meurt</button>
+            <button type="button" data-ph-run="death" aria-pressed="false" data-i18n="ph.run2">Un philosophe meurt</button>
+            <button type="button" data-ph="toggle" data-i18n="ph.toggle">Lecture / pause</button>
+            <button type="button" data-ph="restart" data-i18n="ph.restart">Recommencer</button>
+            <label><span data-i18n="ph.speed">vitesse</span> <select data-ph="speed"><option value="0.25">×0,25</option><option value="0.5" selected>×0,5</option><option value="1">×1</option></select></label>
+            <span data-ph="clock"></span>
+          </div>
+          <p class="note" data-i18n="ph.note">Traces réelles de mon binaire, enregistrées puis rejouées : les threads ne peuvent pas tourner sur un site statique.</p>
+        </div>
+        <div class="project-text">
+          <div class="body" data-i18n-html="philo.body"></div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#c"/></svg>C</li><li>pthreads</li><li>mutex</li><li class="r" data-i18n="tag.concurrency">concurrence</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/PHILOSOPHERS" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+    <section class="stop wrap proj" id="st-minishell" aria-labelledby="h-minishell">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">06</span>
+        <div class="ptitle"><h2 id="h-minishell"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#minishell"/></svg>Minishell</h2><p class="quote" lang="en">“read between lines lol”</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="minishell.date">juin 2025 · cercle 3</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
+      </header>
+      <div class="screen wide" data-visual="minishell">
+        <div class="bar"><i></i><i></i><i></i><span data-i18n="ms.bar">minishell — une vraie session de mon shell, et les processus qu’il a créés</span></div>
+        <div class="ms-grid">
+          <pre class="ms-term" data-ms="term" tabindex="0" data-i18n-aria="ms.termaria" aria-label="Terminal rejouant la session"></pre>
+          <div class="ms-side">
+            <p class="note" data-i18n="ms.treetitle">Processus de la commande en cours</p>
+            <svg data-ms="tree" viewBox="0 0 360 160" role="img" data-i18n-aria="ms.treearia" aria-label="Arbre des processus"></svg>
+            <p class="ms-stats" data-ms="stats"></p>
+          </div>
+        </div>
+        <div class="controls">
+          <button type="button" data-ms="restart" data-i18n="ms.restart">Rejouer la session</button>
+          <button type="button" data-ms="all" data-i18n="ms.all">Tout afficher</button>
+        </div>
+        <p class="note" data-i18n="ms.note">Session enregistrée sur mon binaire. Les appels fork, execve, pipe, dup2 et waitpid sont captés à l’édition de liens, sans modifier le code.</p>
+      </div>
+      <div class="project-text cols">
+        <div class="body" data-i18n-html="minishell.body"></div>
+        <div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#c"/></svg>C</li><li>fork · execve</li><li>pipes</li><li class="r" data-i18n="tag.parsing">parsing</li><li><svg aria-hidden="true"><use href="img/tech.svg#gnubash"/></svg>Bash</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/MINISHELL" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap proj" id="st-cub3d" aria-labelledby="h-cub3d">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">07</span>
+        <div class="ptitle"><h2 id="h-cub3d"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#cub3d"/></svg>Cub3D</h2><p class="quote" lang="en">“not really a 3D cube”</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="cub3d.date">oct. 2025 · cercle 4</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
+      </header>
+      <div class="project">
+        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=12e5eeaca9" data-game-aspect="16 / 9" data-game-title="cub3d">
+          <div class="bar"><i></i><i></i><i></i><span data-i18n="cub3d.bar">cub3d — mon moteur, jouable dans votre navigateur</span></div>
+          <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/cub3d.webp" alt="cub3d : capture du jeu" width="1280" height="720"></div>
+          <div class="controls">
+            <button type="button" data-game="play" data-i18n="game.play">Jouer</button>
+            <span data-game="msg" aria-live="polite"></span>
+          </div>
+          <p class="note" data-i18n="cub3d.keys">W A S D avancer · ← → tourner · E ouvrir une porte · F1 souris · Échap quitter</p>
+        </div>
+        <div class="project-text">
+          <div class="body" data-i18n-html="cub3d.body"></div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#c"/></svg>C</li><li>raycasting</li><li>MiniLibX</li><li class="r" data-i18n="tag.algo">algorithmie</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/CUB3D" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap proj" id="st-inception" aria-labelledby="h-inception">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">08</span>
+        <div class="ptitle"><h2 id="h-inception"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#inception"/></svg>Inception</h2><p class="quote" lang="en">“dream big”</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="inception.date">juil. 2026 · cercle 5</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
+      </header>
+      <div class="screen wide" data-visual="inception">
+        <div class="bar"><i></i><i></i><i></i><span data-i18n="in.bar">inception — mon infrastructure, dessinée depuis mon docker-compose.yml</span></div>
+        <div class="in-grid">
+          <svg data-in="map" viewBox="0 0 700 370" role="img" data-i18n-aria="in.aria" aria-label="Les conteneurs de la pile Inception et leurs liens"></svg>
+          <div><p class="note" data-i18n="in.ordertitle">Ordre de démarrage (depends_on)</p><ol class="in-order" data-in="order"></ol></div>
+        </div>
+        <div class="controls">
+          <button type="button" data-in="boot" data-i18n="in.boot">docker compose up</button>
+          <button type="button" data-in="request" data-i18n="in.request">Envoyer une requête</button>
+        </div>
+        <p class="note" data-i18n="in.note">Services, ports publiés, volumes et dépendances lus dans mon docker-compose.yml ; liens entre services tels que décrits dans le README.</p>
+      </div>
+      <div class="project-text cols">
+        <div class="body" data-i18n-html="inception.body"></div>
+        <div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#docker"/></svg>Docker</li><li><svg aria-hidden="true"><use href="img/tech.svg#nginx"/></svg>NGINX</li><li><svg aria-hidden="true"><use href="img/tech.svg#wordpress"/></svg>WordPress</li><li><svg aria-hidden="true"><use href="img/tech.svg#mariadb"/></svg>MariaDB</li><li><svg aria-hidden="true"><use href="img/tech.svg#n8n"/></svg>n8n</li><li class="r">TLS</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/INCEPTION" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap proj dark" id="st-tracker" aria-labelledby="h-tracker">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">09</span>
+        <div class="ptitle"><span class="badge-prod" data-i18n="prod.badge">en production</span><h2 id="h-tracker"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#tracker"/></svg>card-price-tracker</h2></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="tracker.date">depuis août 2026 · projet perso</dd></div><div><dt data-i18n="meta.commits">Commits</dt><dd>126</dd></div></dl>
+      </header>
+      <div class="screen wide" data-visual="tracker">
+        <div class="bar"><i></i><i></i><i></i><span data-i18n="tr.bar">card-price-tracker — vraies données, exportées de ma base</span></div>
+        <div class="kpis-dark">
+          <div><b data-tr="total">20 698</b><small data-i18n="tr.k1">cartes suivies chaque jour</small></div>
+          <div><b data-tr="days">84</b><small data-i18n="tr.k2">jours d’historique</small></div>
+          <div><b>~37 %</b><small data-i18n="tr.k3">d’appels API en échec, absorbés</small></div>
+          <div><b>2</b><small data-i18n="tr.k4">marchés : TCGPlayer et CardMarket</small></div>
+        </div>
+        <div class="tr-grid">
+          <svg data-tr="chart" viewBox="0 0 640 300" role="img" data-i18n-aria="tr.aria" aria-label="Prix tendance de la carte sélectionnée"></svg>
+          <div class="card-tabs" data-tr="tabs"></div>
+        </div>
+        <svg data-tr="flow" class="flow-svg" viewBox="0 0 680 130" role="img" data-i18n-aria="tr.flowaria" aria-label="Schéma du pipeline"></svg>
+        <p class="note" data-i18n="tr.note">Prix tendance CardMarket, en euros. Instantané exporté de mon API au moment de la mise à jour du site.</p>
+      </div>
+      <div class="project-text cols">
+        <div class="body" data-i18n-html="tracker.body"></div>
+        <div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#python"/></svg>Python</li><li><svg aria-hidden="true"><use href="img/tech.svg#apacheairflow"/></svg>Airflow</li><li><svg aria-hidden="true"><use href="img/tech.svg#postgresql"/></svg>PostgreSQL</li><li><svg aria-hidden="true"><use href="img/tech.svg#fastapi"/></svg>FastAPI</li><li><svg aria-hidden="true"><use href="img/tech.svg#react"/></svg>React</li><li><svg aria-hidden="true"><use href="img/tech.svg#metabase"/></svg>Metabase</li><li class="r"><svg aria-hidden="true"><use href="img/tech.svg#docker"/></svg>Docker</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/card-price-tracker" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap proj dark" id="st-annonces" aria-labelledby="h-annonces">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">10</span>
+        <div class="ptitle"><span class="badge-prod" data-i18n="prod.badge">en production</span><h2 id="h-annonces"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#annonces"/></svg>annonces</h2><p class="repo-name">Daily-Jobs-Offers</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="annonces.date">depuis août 2026 · projet perso</dd></div><div><dt data-i18n="meta.commits">Commits</dt><dd>74</dd></div></dl>
+      </header>
+      <div class="screen wide" data-visual="annonces">
+        <div class="bar"><i></i><i></i><i></i><span data-i18n="an.bar">annonces — volumes réels des 30 derniers jours</span></div>
+        <div class="kpis-dark">
+          <div><b data-an="total">245</b><small data-i18n="an.k1">offres collectées en 30 jours</small></div>
+          <div><b data-an="nsrc">10</b><small data-i18n="an.k2">sites d’origine</small></div>
+          <div><b>8 h</b><small data-i18n="an.k3">chaque matin de semaine</small></div>
+          <div><b>0</b><small data-i18n="an.k4">intervention manuelle</small></div>
+        </div>
+        <svg data-an="funnel" class="flow-svg" viewBox="0 0 600 220" role="img" data-i18n-aria="an.aria" aria-label="Les offres de chaque source passent par n8n, le dédoublonnage puis le digest"></svg>
+        <div class="an-grid">
+          <figure><figcaption data-i18n="an.bytitle">Offres par site, 30 jours</figcaption><svg data-an="bars" role="img" data-i18n-aria="an.bytitle" aria-label="Offres par site"></svg></figure>
+          <figure><figcaption data-i18n="an.daytitle">Rythme quotidien</figcaption><svg data-an="days" viewBox="0 0 400 110" role="img" data-i18n-aria="an.daytitle" aria-label="Offres par jour"></svg></figure>
+          <figure class="digest" data-an="digest"><figcaption data-i18n="an.dgcap">Le digest du matin (aperçu)</figcaption><div class="mail"><b data-an="dgtitle"></b><ul></ul></div></figure>
+        </div>
+      </div>
+      <div class="project-text cols">
+        <div class="body" data-i18n-html="annonces.body"></div>
+        <div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#n8n"/></svg>n8n</li><li><svg aria-hidden="true"><use href="img/tech.svg#postgresql"/></svg>PostgreSQL</li><li><svg aria-hidden="true"><use href="img/tech.svg#docker"/></svg>Docker</li><li><svg aria-hidden="true"><use href="img/tech.svg#gnubash"/></svg>Shell</li><li class="r" data-i18n="tag.scraping">scraping</li></ul>
+          <a class="repo" href="https://github.com/Nesplee/Daily-Jobs-Offers" data-i18n="repo">Voir le dépôt →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATIONS:transcendence -->
+
+    <section class="stop wrap contact" id="st-contact" aria-labelledby="h-contact">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead"><span class="idx">—</span><div class="ptitle"><h2 id="h-contact" data-i18n="contact.title">Me contacter</h2></div></header>
+      <p class="lede" data-i18n="contact.text"></p>
+      <div id="contact-slot"><button id="contact-reveal" class="big" type="button" hidden data-i18n="contact.reveal">Afficher mes coordonnées</button></div>
+      <noscript><p>GitHub : <a href="https://github.com/Nesplee">github.com/Nesplee</a></p></noscript>
+      <p><a class="repo" href="https://github.com/Nesplee">github.com/Nesplee</a></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p data-i18n="footer.text"></p>
+    <div class="giant" aria-hidden="true">Dimitri Nguyen</div>
+  </footer>
+</body>
+</html>

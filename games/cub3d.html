@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; frame-src 'self'; child-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>cub3d</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<canvas id="game" tabindex="0" aria-label="cub3d : W A S D, flèches, E pour les portes, F1 pour la souris"></canvas>
+<div class="over" id="over" hidden><div><p id="end">Partie terminée</p><button id="again" type="button">Rejouer</button></div></div>
+<script src="./cub3d-page.js?v=12e5eeaca9"></script>
+<script src="../wasm/cub3d/cub3d.js?v=12e5eeaca9"></script>
+</body>
+</html>
