@@ -1,7 +1,7 @@
 // runProgram('push_swap', ['3','2','1']) -> Promise<string[]> (lines printed by the program)
 export function runProgram(name, args, input = '') {
   return new Promise((resolve, reject) => {
-    const w = new Worker(new URL('./wasm-run-worker.js?v=fc7e8710c8' + new URL(import.meta.url).search, import.meta.url), { type: 'module' });
+    const w = new Worker(new URL('./wasm-run-worker.js?v=9ee54cad27' + new URL(import.meta.url).search, import.meta.url), { type: 'module' });
     w.onmessage = ({ data }) => { w.terminate(); data.error ? reject(new Error(data.error)) : resolve(data.out); };
     w.onerror = (e) => { w.terminate(); reject(e); };
     w.postMessage({ name, args, input });

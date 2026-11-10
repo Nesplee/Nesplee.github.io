@@ -81,9 +81,9 @@ nav.top { position: sticky; top: 0; z-index: 10; display: grid; grid-template-co
   .hero .intro, .facts { grid-column: 1 / -1; } .facts { margin-top: 20px; }
 }
 
-/* letters that cross the photo disc turn white: a copy of the title, clipped to the disc (site/js/main.js) */
-.hero .ghost { color: #fff; z-index: 3; pointer-events: none; user-select: none; clip-path: circle(0); }
-.hero .ghost em { color: #fff; }
+/* letters that cross the photo disc turn red: a copy of the title, clipped to the disc (site/js/main.js) */
+.hero .ghost { color: var(--red); z-index: 3; pointer-events: none; user-select: none; clip-path: circle(0); }
+.hero .ghost em { color: var(--red); }
 
 /* ---------- ticker ---------- */
 .ticker { background: var(--ink); color: var(--paper); overflow: hidden; border-block: 1px solid var(--ink); }
