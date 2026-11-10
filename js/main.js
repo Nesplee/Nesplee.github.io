@@ -1,7 +1,10 @@
-import { pickLang, applyLang } from './i18n.js?v=12e5eeaca9';
-import { revealContact } from './contact.js?v=12e5eeaca9';
-import { mountLine } from './line.js?v=12e5eeaca9';
-import { STRINGS } from './strings.js?v=12e5eeaca9';
+import { pickLang, applyLang } from './i18n.js?v=61c49a6ea3';
+import { revealContact } from './contact.js?v=61c49a6ea3';
+import { mountLine } from './line.js?v=61c49a6ea3';
+import { STRINGS } from './strings.js?v=61c49a6ea3';
+
+// GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
+try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
 
 if (new URLSearchParams(location.search).get('police') === 'libre') document.documentElement.classList.add('free-font');
 
@@ -43,4 +46,18 @@ reveal.addEventListener('click', () => {
 });
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=12e5eeaca9').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=61c49a6ea3').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+
+// certificates block: the big number counts up once, when it comes into view
+const counter = document.querySelector('[data-count]');
+if (counter && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const end = Number(counter.dataset.count);
+  counter.textContent = '0';
+  new IntersectionObserver(([e], o) => {
+    if (!e.isIntersecting) return;
+    o.disconnect();
+    const t0 = performance.now();
+    const step = (now) => { const k = Math.min(1, (now - t0) / 1200); counter.textContent = String(Math.round(end * (1 - (1 - k) ** 3))); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }, { threshold: 0.5 }).observe(counter);
+}

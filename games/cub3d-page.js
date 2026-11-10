@@ -1,3 +1,5 @@
+// only this site may frame the game page
+try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
   // The owner's cub3d, unmodified, compiled to WebAssembly. Its XPM textures were converted to PNG at
   // build time (wasm/build.sh); they are decoded here before main() and served for the original .xpm paths.
   const map = 'maps/A2.cub';
@@ -27,7 +29,7 @@
 
   var Module = {
     canvas: document.getElementById('game'),
-    locateFile: (file) => '../wasm/cub3d/' + file + (new URLSearchParams(location.search).has('v') ? '?v=' + new URLSearchParams(location.search).get('v') : ''),
+    locateFile: (file) => '../wasm/cub3d/' + file + (/^[0-9a-f]{10}$/.test(new URLSearchParams(location.search).get('v') || '') ? '?v=' + new URLSearchParams(location.search).get('v') : ''), // only a build hash is accepted
     mlxLoopCalls: 1,
     mlxPointerLock: true,
     mlxPngKey: pngKey,

@@ -1,4 +1,4 @@
-import { canPlay, detectEnv } from './game-env.js?v=12e5eeaca9';
+import { canPlay, detectEnv } from './game-env.js?v=61c49a6ea3';
 
 // A poster until the visitor clicks "Play"; then the owner's game (WebAssembly) in an iframe.
 // Keys reach the game only while its iframe has focus, so scrolling the page never moves the player.
@@ -30,8 +30,8 @@ export function mount(el, { t, onLangChange }) {
     timer = setTimeout(() => { if (frame.hidden) { frame.remove(); frame = null; say('game.failed'); } }, 15000);
   }
   addEventListener('message', (e) => {
-    if (!frame || e.source !== frame.contentWindow) return;
-    if (e.data?.type === 'size' && e.data.w > 0 && e.data.h > 0) frame.style.aspectRatio = `${e.data.w} / ${e.data.h}`;
+    if (!frame || e.source !== frame.contentWindow || e.origin !== location.origin) return; // only our own game frame
+    if (e.data?.type === 'size') { const w = Math.round(Number(e.data.w)), h = Math.round(Number(e.data.h)); if (w > 0 && h > 0 && w < 10000 && h < 10000) frame.style.aspectRatio = `${w} / ${h}`; }
     if (e.data === 'ready') { clearTimeout(timer); poster.hidden = true; frame.hidden = false; play.textContent = t('game.restart'); say('game.help'); frame.focus(); }
     if (e.data === 'failed') { clearTimeout(timer); frame.remove(); frame = null; poster.hidden = false; say('game.failed'); }
   });
