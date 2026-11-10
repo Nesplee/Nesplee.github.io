@@ -103,10 +103,10 @@ nav.top { position: sticky; top: 0; z-index: 10; display: grid; grid-template-co
 @media (max-width: 700px) { .idx-list a { grid-template-columns: 34px 1fr auto; } .idx-list svg, .idx-list img, .idx-list .k { display: none; } }
 
 /* ---------- stations ---------- */
-section.stop { position: relative; padding-top: 110px; padding-bottom: 110px; }
+section.stop { position: relative; padding-top: 110px; padding-bottom: 110px; scroll-margin-top: 20px; }
 .phead { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: end; border-top: 3px solid currentColor; padding-top: 14px; margin-bottom: 36px; }
 .idx { font: 200 clamp(80px, 11vw, 180px)/.78 var(--sans); letter-spacing: -.06em; color: var(--red); }
-.ptitle h2 { margin: 0; font: 900 clamp(40px, 6.4vw, 108px)/.88 var(--sans); letter-spacing: -.045em; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.ptitle h2 { margin: 0; font: 900 clamp(40px, 6.4vw, 108px)/.88 var(--sans); letter-spacing: -.045em; display: flex; align-items: center; gap: 16px; flex-wrap: nowrap; } /* the icon stays beside the title, long titles wrap on their own */
 .date { font: 500 14px var(--mono); color: var(--red-d); letter-spacing: .04em; margin-bottom: 8px; }
 .dark .date { color: var(--hot); }
 .quote { font: 300 clamp(18px, 1.6vw, 24px) var(--sans); margin: 10px 0 0; color: var(--muted); }
