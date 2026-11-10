@@ -1,7 +1,7 @@
-import { pickLang, applyLang } from './i18n.js?v=ea98f1308c';
-import { revealContact } from './contact.js?v=ea98f1308c';
-import { mountLine } from './line.js?v=ea98f1308c';
-import { STRINGS } from './strings.js?v=ea98f1308c';
+import { pickLang, applyLang } from './i18n.js?v=fc7e8710c8';
+import { revealContact } from './contact.js?v=fc7e8710c8';
+import { mountLine } from './line.js?v=fc7e8710c8';
+import { STRINGS } from './strings.js?v=fc7e8710c8';
 
 // GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
 try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
@@ -46,7 +46,7 @@ reveal.addEventListener('click', () => {
 });
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=ea98f1308c').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=fc7e8710c8').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
 
 // certificates block: the big number counts up once, when it comes into view
 const counter = document.querySelector('[data-count]');
@@ -60,4 +60,22 @@ if (counter && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const step = (now) => { const k = Math.min(1, (now - t0) / 1200); counter.textContent = String(Math.round(end * (1 - (1 - k) ** 3))); if (k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   }, { threshold: 0.5 }).observe(counter);
+}
+
+// Hero: the title copy in white, clipped to the red disc, so letters over the photo stay readable
+const h1 = document.querySelector('.hero h1'), disc = document.querySelector('.hero .disc');
+if (h1 && disc) {
+  const ghost = document.createElement('div');
+  ghost.className = 'ghost';
+  ghost.setAttribute('aria-hidden', 'true');
+  ghost.append(...[...h1.childNodes].map((n) => n.cloneNode(true))); // keeps data-i18n: language switches update it too
+  h1.after(ghost);
+  const clip = () => {
+    const d = disc.getBoundingClientRect(), g = ghost.getBoundingClientRect();
+    ghost.style.clipPath = `circle(${d.width / 2}px at ${d.left + d.width / 2 - g.left}px ${d.top + d.height / 2 - g.top}px)`;
+  };
+  clip();
+  addEventListener('resize', clip);
+  document.fonts?.ready.then(clip);
+  onLangChange(clip);
 }
