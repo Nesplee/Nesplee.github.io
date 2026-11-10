@@ -1,5 +1,5 @@
-import { applyOp, shuffled } from './pushswap-ops.js?v=61c49a6ea3';
-import { runProgram } from '../run-wasm.js?v=61c49a6ea3';
+import { applyOp, shuffled } from './pushswap-ops.js?v=f9c94eb668';
+import { runProgram } from '../run-wasm.js?v=f9c94eb668';
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -61,5 +61,9 @@ export function mount(el, { t, onLangChange }) {
   el.querySelectorAll('[data-ps-size]').forEach((b) => b.addEventListener('click', () => start(Number(b.dataset.psSize))));
   el.querySelector('[data-ps="replay"]').addEventListener('click', () => { if (ops.length) play(); });
   onLangChange(() => { draw(); verdict.textContent = result ? `${t('ps.checker')} ${result}` : ''; });
+  // before the first run: 100 shuffled numbers waiting in stack A
+  initial = shuffled(100);
+  rank = new Map([...initial].sort((x, y) => x - y).map((v, i) => [v, i]));
+  state = { a: [...initial], b: [] };
   draw();
 }

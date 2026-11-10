@@ -1,4 +1,4 @@
-import { el, reduced, fmtDate } from './svg.js?v=61c49a6ea3';
+import { el, reduced, fmtDate } from './svg.js?v=f9c94eb668';
 
 // Real counts from the owner's annonces database (data/annonces.json: per source host and per day,
 // last 30 days — no company names or titles), shown as a funnel, two charts and a digest preview.
@@ -23,10 +23,10 @@ export async function mount(root, { t, onLangChange, currentLang }) {
       el(funnel, 'path', { d: `M${x0} ${ys[i]}C${x0 + 90} ${ys[i]} ${stages[0][0] - 70} ${H / 2} ${stages[0][0] - 46} ${H / 2}`, class: 'edge' });
     });
     for (const [x, label] of stages) {
-      el(funnel, 'rect', { x: x - 46, y: H / 2 - 18, width: 92, height: 36, rx: 8, class: `node ${label === t('an.digest') ? 'hot' : ''}` });
-      el(funnel, 'text', { x, y: H / 2 + 4, 'text-anchor': 'middle', class: 'nl' }, label);
+      el(funnel, 'rect', { x: x - 54, y: H / 2 - 18, width: 108, height: 36, rx: 8, class: `node ${label === t('an.digest') ? 'hot' : ''}` });
+      el(funnel, 'text', { x, y: H / 2 + 4, 'text-anchor': 'middle', class: 'nl small' }, label);
     }
-    el(funnel, 'path', { d: `M346 ${H / 2}H374M466 ${H / 2}H494`, class: 'edge' });
+    el(funnel, 'path', { d: `M354 ${H / 2}H366M474 ${H / 2}H486`, class: 'edge' });
     if (reduced()) return;
     const g = el(funnel, 'g');
     const total = sources.reduce((s, [, n]) => s + n, 0);

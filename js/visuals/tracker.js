@@ -1,5 +1,5 @@
-import { el, reduced, fmtEUR, fmtPct, fmtDate } from './svg.js?v=61c49a6ea3';
-import { splitGaps, change } from './series.js?v=61c49a6ea3';
+import { el, reduced, fmtEUR, fmtPct, fmtDate } from './svg.js?v=f9c94eb668';
+import { splitGaps, change } from './series.js?v=f9c94eb668';
 
 // Real CardMarket trend prices exported from the owner's tracker API (data/tracker.json),
 // plus an animated sketch of the pipeline described in the card-price-tracker README.
@@ -61,7 +61,7 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     el(chart, 'circle', { cx: X(max[0]), cy: Y(max[1]), r: 5, fill: '#f3eee4' });
     el(chart, 'text', { x: Math.min(X(max[0]), R - 60), y: Y(max[1]) - 12, class: 'lbl', 'text-anchor': 'middle' }, `${t('tr.peak')} ${fmtEUR(max[1], lang)}`);
     el(chart, 'circle', { cx: X(last[0]), cy: Y(last[1]), r: 5, fill: '#2fbf71' });
-    el(chart, 'text', { x: X(last[0]) - 8, y: Y(last[1]) + 22, class: 'lbl ok', 'text-anchor': 'end' }, `${fmtDate(last[0], lang)} · ${fmtEUR(last[1], lang)}`);
+    el(chart, 'text', { x: X(last[0]) - 8, y: Math.min(B - 26, Y(last[1]) + 24), class: 'lbl ok', 'text-anchor': 'end' }, `${fmtDate(last[0], lang)} · ${fmtEUR(last[1], lang)}`);
     el(chart, 'text', { x: L, y: 22, class: 'ttl' }, `${current.name} · ${current.set} — ${t('tr.trend')}`);
     if (!reduced()) for (const [i, p] of lines.entries()) {
       const len = p.getTotalLength();
@@ -77,20 +77,20 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     const my = ++gen;
     flow.replaceChildren();
     const nodes = [
-      ['api', 10, 'pokemontcg.io'], ['dag', 150, 'Airflow DAG'], ['stg', 290, 'staging'],
-      ['dwh', 430, t('tr.star')], ['out', 560, 'Metabase · React'],
+      ['api', 6, 'pokemontcg.io'], ['dag', 142, 'Airflow DAG'], ['stg', 278, 'staging'],
+      ['dwh', 414, t('tr.star')], ['out', 550, 'Metabase · React'],
     ];
     const y = 46;
     for (const [id, x, label] of nodes) {
-      el(flow, 'rect', { x, y: y - 18, width: 110, height: 36, rx: 8, class: `node ${id === 'dwh' ? 'hot' : ''}` });
-      el(flow, 'text', { x: x + 55, y: y + 4, 'text-anchor': 'middle', class: 'nl' }, label);
+      el(flow, 'rect', { x, y: y - 18, width: 124, height: 36, rx: 8, class: `node ${id === 'dwh' ? 'hot' : ''}` });
+      el(flow, 'text', { x: x + 62, y: y + 4, 'text-anchor': 'middle', class: 'nl small' }, label);
     }
-    for (let i = 0; i < nodes.length - 1; i++) el(flow, 'path', { d: `M${nodes[i][1] + 110} ${y}H${nodes[i + 1][1]}`, class: 'edge' });
-    el(flow, 'rect', { x: 290, y: 96, width: 110, height: 28, rx: 8, class: 'node q' });
-    el(flow, 'text', { x: 345, y: 114, 'text-anchor': 'middle', class: 'nl' }, t('tr.quarantine'));
-    el(flow, 'path', { d: `M345 ${y + 18}V96`, class: 'edge' });
-    el(flow, 'path', { d: `M150 ${y - 10}C120 6 90 6 65 ${y - 18}`, class: 'edge retry' });
-    el(flow, 'text', { x: 108, y: 10, 'text-anchor': 'middle', class: 'nl small' }, t('tr.retry'));
+    for (let i = 0; i < nodes.length - 1; i++) el(flow, 'path', { d: `M${nodes[i][1] + 124} ${y}H${nodes[i + 1][1]}`, class: 'edge' });
+    el(flow, 'rect', { x: 278, y: 96, width: 124, height: 28, rx: 8, class: 'node q' });
+    el(flow, 'text', { x: 340, y: 114, 'text-anchor': 'middle', class: 'nl' }, t('tr.quarantine'));
+    el(flow, 'path', { d: `M340 ${y + 18}V96`, class: 'edge' });
+    el(flow, 'path', { d: `M142 ${y - 10}C116 6 92 6 68 ${y - 18}`, class: 'edge retry' });
+    el(flow, 'text', { x: 105, y: 10, 'text-anchor': 'middle', class: 'nl small' }, t('tr.retry'));
     if (reduced()) return;
     const dots = el(flow, 'g');
     const spawn = () => {
@@ -99,7 +99,7 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
       if (document.hidden || box.bottom < 0 || box.top > innerHeight) { setTimeout(spawn, 500); return; } // idle off-screen
       const r = Math.random(), kind = r < 0.37 ? 'retry' : r < 0.43 ? 'q' : 'ok';
       const c = el(dots, 'circle', { r: 4, cx: 120, cy: y, class: `dot ${kind}` });
-      const path = kind === 'retry' ? [[150, y], [150, y - 10], [65, y - 18]] : kind === 'q' ? [[290, y], [345, y], [345, 110]] : [[290, y], [430, y], [560, y], [620, y]];
+      const path = kind === 'retry' ? [[142, y], [142, y - 10], [68, y - 18]] : kind === 'q' ? [[278, y], [340, y], [340, 110]] : [[278, y], [414, y], [550, y], [660, y]];
       const keyframes = [{ cx: 120, cy: y }, ...path.map(([cx, cy]) => ({ cx, cy }))].map((p) => ({ transform: `translate(${p.cx - 120}px, ${p.cy - y}px)` }));
       c.animate(keyframes, { duration: 2200, easing: 'linear' }).onfinish = () => c.remove();
       setTimeout(spawn, 260);

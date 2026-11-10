@@ -53,7 +53,7 @@ button:hover { background: var(--ink); color: var(--paper); border-color: var(--
 /* ---------- top bar ---------- */
 nav.top { position: sticky; top: 0; z-index: 10; display: grid; grid-template-columns: 1fr auto auto; gap: 24px; align-items: center; padding: 14px var(--gutter);
   background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
-.brand { font: 900 18px var(--sans); letter-spacing: -.02em; text-decoration: none; text-transform: uppercase; }
+.brand { font: 900 18px var(--sans); letter-spacing: -.02em; word-spacing: .25em; text-decoration: none; text-transform: uppercase; }
 .toc { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font: 500 14px var(--sans); }
 .toc a { text-decoration: none; } .toc a:hover { color: var(--red); }
 .toc span:first-child { font: 12px var(--mono); color: var(--red); margin-right: 4px; }
@@ -117,6 +117,7 @@ section.stop { position: relative; padding-top: 110px; padding-bottom: 110px; }
 .meta dt { font: 500 11px var(--sans); text-transform: uppercase; letter-spacing: .1em; opacity: .6; }
 .meta dd { margin: 0; font: 500 16px var(--sans); }
 @media (max-width: 900px) { .phead { grid-template-columns: auto 1fr; } .meta { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .idx { font-size: 64px; } .ptitle { min-width: 0; } .ptitle h2 { font-size: clamp(30px, 9.4vw, 44px); overflow-wrap: anywhere; } }
 .picon { width: .8em; height: .8em; color: currentColor; flex: none; }
 img.picon { width: .7em; height: .7em; }
 .lede { font: 400 clamp(19px, 1.7vw, 24px)/1.45 var(--sans); max-width: 40ch; }
@@ -283,7 +284,7 @@ button.big:hover { background: var(--red); border-color: var(--red); color: #fff
 .contact .revealed a { text-decoration: none; border-bottom: 4px solid var(--red); }
 .foot { background: var(--ink); color: var(--paper); padding: 40px var(--gutter) 0; overflow: hidden; }
 .foot p { max-width: var(--max); margin: 0 auto 30px; font: 13px var(--mono); color: var(--screen-muted); }
-.giant { font: 900 clamp(64px, 15.5vw, 300px)/.78 var(--sans); letter-spacing: -.06em; white-space: nowrap; color: var(--red); transform: translateY(14%); }
+.giant { font: 900 clamp(48px, 12.6vw, 240px)/.8 var(--sans); letter-spacing: -.055em; white-space: nowrap; color: var(--red); padding-bottom: .04em; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
