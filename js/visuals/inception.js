@@ -1,5 +1,5 @@
-import { bootOrder } from './inception-order.js?v=24c3c0b506';
-import { el, reduced } from './svg.js?v=24c3c0b506';
+import { bootOrder } from './inception-order.js?v=120c0f30a1';
+import { el, reduced } from './svg.js?v=120c0f30a1';
 
 // The owner's Inception stack, drawn from data/inception.json (exported from the real docker-compose.yml).
 // Start order comes from depends_on; the links between services are the ones the project README describes.
