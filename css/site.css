@@ -62,8 +62,8 @@ nav.top { position: sticky; top: 0; z-index: 10; display: grid; grid-template-co
 /* ---------- hero ---------- */
 .hero { min-height: calc(100vh - 60px); display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr auto; column-gap: 20px; padding-top: 6vh; padding-bottom: 5vh; overflow: visible; }
 .hero .kicker { grid-column: 1 / -1; font: 500 15px var(--sans); letter-spacing: .08em; text-transform: uppercase; border-top: 3px solid var(--ink); padding-top: 12px; margin: 0; }
-.hero h1, .hero .ghost { grid-column: 1 / 11; grid-row: 2; align-self: center; position: relative; z-index: 2; margin: 4vh 0; font: 900 clamp(50px, 9vw, 164px)/.84 var(--sans); letter-spacing: -.045em; }
-.hero h1 em, .hero .ghost em { font-style: normal; color: var(--red); }
+.hero h1 { grid-column: 1 / 11; grid-row: 2; align-self: center; position: relative; z-index: 2; margin: 4vh 0; font: 900 clamp(50px, 9vw, 164px)/.84 var(--sans); letter-spacing: -.045em; }
+.hero h1 em { font-style: normal; color: var(--red); }
 .disc { grid-column: 6 / 13; grid-row: 1 / 3; justify-self: end; align-self: start; margin-top: 8vh; width: min(41vw, 580px); aspect-ratio: 1; border-radius: 50%; background: var(--red); display: grid; place-items: center; z-index: 1; }
 .disc { overflow: hidden; align-items: end; }
 .disc .portrait { display: block; width: 82%; height: auto; margin-top: 12%; filter: grayscale(1) contrast(1.08); mix-blend-mode: multiply; }
@@ -77,14 +77,12 @@ nav.top { position: sticky; top: 0; z-index: 10; display: grid; grid-template-co
 .facts span { font: 500 13px var(--sans); text-transform: uppercase; letter-spacing: .06em; }
 @media (max-width: 900px) {
   /* mobile: photo first, the title only overlaps the bottom of the disc (the shoulders), never the face */
-  .hero h1, .hero .ghost { grid-column: 1 / -1; grid-row: 2; align-self: start; margin-top: 5vw; font-size: clamp(34px, 9.6vw, 80px); }
+  .hero h1 { grid-column: 1 / -1; grid-row: 2; align-self: start; margin-top: 5vw; font-size: clamp(34px, 9.6vw, 80px); }
   .disc { grid-column: 1 / -1; grid-row: 1; justify-self: end; width: min(70vw, 340px); margin-top: 3vh; opacity: 1; }
   .hero .intro, .facts { grid-column: 1 / -1; } .facts { margin-top: 20px; }
 }
 
 /* letters that cross the photo disc turn red: a copy of the title, clipped to the disc (site/js/main.js) */
-.hero .ghost { color: var(--red); z-index: 3; pointer-events: none; user-select: none; clip-path: circle(0); }
-.hero .ghost em { color: var(--red); }
 /* desktop too: letters over the photo turn red (only the first letters of the last words reach it) */
 
 /* ---------- ticker ---------- */
@@ -418,7 +416,7 @@ section.proj[id] { scroll-margin-top: 20px; }
 @media (max-width: 900px) { .une .cols { grid-template-columns: 1fr; } .une .cols > div { border: 0; padding: 0 0 18px; } .une .mast .m { text-align: left; } }
 
 /* hero title = table of contents: each word leads to its part of the page */
-.hero h1 a, .hero .ghost a { color: inherit; text-decoration: none; transition: color .2s; }
+.hero h1 a { color: inherit; text-decoration: none; transition: color .2s; }
 .hero h1 a:hover, .hero h1 a:focus-visible { color: var(--red); }
 .hero h1 em a:hover, .hero h1 em a:focus-visible { color: var(--ink); }
 
@@ -439,23 +437,21 @@ section.proj[id] { scroll-margin-top: 20px; }
 .toc a { white-space: nowrap; } @media (max-width: 1100px) { .toc span:first-child { display: none; } }
 
 /* hero: the P words climb from bottom to top: each line starts one step further right than the line below */
-.hero h1, .hero .ghost { --step: .62em; width: max-content; max-width: 100%; justify-self: start; }
-.hero h1 br, .hero .ghost br { display: none; }
-.hero h1 a, .hero .ghost a, .hero h1 em, .hero .ghost em { display: block; }
-.hero h1 .s0, .hero .ghost .s0 { margin-left: calc(var(--step) * 5); }
-.hero h1 .s1, .hero .ghost .s1 { margin-left: calc(var(--step) * 4); }
-.hero h1 .s2, .hero .ghost .s2 { margin-left: calc(var(--step) * 3); }
-.hero h1 .s3, .hero .ghost .s3 { margin-left: calc(var(--step) * 2); }
-.hero h1 .s4, .hero .ghost .s4 { margin-left: calc(var(--step) * 1); }
-@media (max-width: 900px) { .hero h1, .hero .ghost { --step: .32em; } }
+.hero h1 { --step: .62em; width: max-content; max-width: 100%; justify-self: start; }
+.hero h1 br { display: none; }
+.hero h1 a, .hero h1 em { display: block; }
+.hero h1 .s0 { margin-left: calc(var(--step) * 5); }
+.hero h1 .s1 { margin-left: calc(var(--step) * 4); }
+.hero h1 .s2 { margin-left: calc(var(--step) * 3); }
+.hero h1 .s3 { margin-left: calc(var(--step) * 2); }
+.hero h1 .s4 { margin-left: calc(var(--step) * 1); }
+@media (max-width: 900px) { .hero h1 { --step: .32em; } }
 /* desktop: photo on the left, the staircase of P words on the right, stepping away from the photo */
 @media (min-width: 901px) {
   .disc { grid-column: 1 / 6; justify-self: start; width: min(32vw, 440px); }
-  .hero h1, .hero .ghost { grid-column: 5 / -1; justify-self: start; margin-left: -1.05em; font-size: clamp(40px, 6.3vw, 106px); --step: .74em; }
+  .hero h1 { grid-column: 5 / -1; justify-self: start; font-size: clamp(40px, 6.3vw, 106px); --step: .74em; }
 }
 
 /* chapter words: each part of the page opens with its P word from the hero title */
 .chap { font: 900 clamp(40px, 5.4vw, 88px)/.9 var(--sans); letter-spacing: -.045em; margin: 0 0 22px; }
 .dark .chap { color: var(--screen-ink); }
-/* the title keeps its own colours over the photo: black, and red for Production. — no recoloured copy */
-.hero .ghost { display: none !important; }

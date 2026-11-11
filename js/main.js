@@ -1,8 +1,9 @@
-import { pickLang, applyLang } from './i18n.js?v=ee2d8f8fdf';
-import { revealContact } from './contact.js?v=ee2d8f8fdf';
-import { mountLine } from './line.js?v=ee2d8f8fdf';
-import { STRINGS } from './strings.js?v=ee2d8f8fdf';
-import { mountBoard } from './board.js?v=ee2d8f8fdf';
+import { pickLang, applyLang } from './i18n.js?v=5aef843221';
+import { revealContact } from './contact.js?v=5aef843221';
+import { mountLine } from './line.js?v=5aef843221';
+import { STRINGS } from './strings.js?v=5aef843221';
+import { mountBoard } from './board.js?v=5aef843221';
+import { mountHero } from './hero.js?v=5aef843221';
 
 // GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
 try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
@@ -36,12 +37,11 @@ mountLine(document.querySelector('main.page'), document.getElementById('fill'), 
 const reveal = document.getElementById('contact-reveal');
 reveal.hidden = false;
 reveal.addEventListener('click', () => {
-  const { email, phone, phoneHref } = revealContact();
+  const { email } = revealContact();
   const mail = Object.assign(document.createElement('a'), { href: 'mailto:' + email, textContent: email });
-  const tel = Object.assign(document.createElement('a'), { href: phoneHref, textContent: phone });
   const box = document.createElement('p');
   box.className = 'revealed';
-  box.append(mail, document.createElement('br'), tel);
+  box.append(mail);
   reveal.replaceWith(box);
   mail.focus();
 });
@@ -51,7 +51,7 @@ const board = document.querySelector('.board');
 if (board) mountBoard(board);
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=ee2d8f8fdf').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=5aef843221').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
 
 // certificates block: the big number counts up once, when it comes into view
 const counter = document.querySelector('[data-count]');
@@ -67,21 +67,6 @@ if (counter && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }, { threshold: 0.5 }).observe(counter);
 }
 
-// Hero: the title copy in white, clipped to the red disc, so letters over the photo stay readable
+// Hero: on desktop the last words bite into the photo by about one letter (see hero.js)
 const h1 = document.querySelector('.hero h1'), disc = document.querySelector('.hero .disc');
-if (h1 && disc) {
-  const ghost = document.createElement('div');
-  ghost.className = 'ghost';
-  ghost.setAttribute('aria-hidden', 'true');
-  ghost.append(...[...h1.childNodes].map((n) => n.cloneNode(true)));
-  ghost.querySelectorAll('a').forEach((a) => { a.tabIndex = -1; }); // the copy is decoration: keep its links out of keyboard focus // keeps data-i18n: language switches update it too
-  h1.after(ghost);
-  const clip = () => {
-    const d = disc.getBoundingClientRect(), g = ghost.getBoundingClientRect();
-    ghost.style.clipPath = `circle(${d.width / 2}px at ${d.left + d.width / 2 - g.left}px ${d.top + d.height / 2 - g.top}px)`;
-  };
-  clip();
-  addEventListener('resize', clip);
-  document.fonts?.ready.then(clip);
-  onLangChange(clip);
-}
+if (h1 && disc) mountHero(h1, disc, onLangChange);
