@@ -1,4 +1,4 @@
-import { el, NS, reduced } from './svg.js?v=e0f784ef9d';
+import { el, NS, reduced } from './svg.js?v=66daa4c9ac';
 
 // Kepler bento: illustrative animations, one per mission tile. No real data, no internal names.
 export function mount(root, { t, onLangChange }) {
@@ -66,10 +66,12 @@ export function mount(root, { t, onLangChange }) {
   every(1100, logLine);
 
   // n8n executions
+  const workflows = ['kp.w1', 'kp.w3', 'kp.w2', 'kp.w4'];
+  let wi = 0;
   const addExec = () => {
     const d = document.createElement('div'), b = document.createElement('b'), s = document.createElement('span');
     b.textContent = '✓';
-    s.textContent = t('kp.exec');
+    s.textContent = t(workflows[wi++ % workflows.length]);
     d.append(b, s);
     $('exec').prepend(d);
     while ($('exec').children.length > 4) $('exec').lastChild.remove();

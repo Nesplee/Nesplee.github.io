@@ -421,3 +421,17 @@ section.proj[id] { scroll-margin-top: 20px; }
 .hero h1 a, .hero .ghost a { color: inherit; text-decoration: none; transition: color .2s; }
 .hero h1 a:hover, .hero h1 a:focus-visible { color: var(--red); }
 .hero h1 em a:hover, .hero h1 em a:focus-visible { color: var(--ink); }
+
+/* what I am looking for + CV downloads */
+.seek-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 0; border-top: 1.5px solid var(--ink); }
+.seek-grid div { padding: 16px 18px 18px 0; border-bottom: 1px solid var(--rule); min-width: 0; }
+.seek-grid .wide { grid-column: 1 / -1; }
+.seek-grid dt { font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--red); margin-bottom: 6px; }
+.seek-grid dd { margin: 0; font: 700 clamp(18px, 1.8vw, 26px)/1.15 var(--sans); letter-spacing: -.02em; }
+.seek-grid .wide dd { font: 900 clamp(30px, 4.4vw, 64px)/1 var(--sans); letter-spacing: -.04em; }
+.cv-dl { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.cv-dl a { font: 700 18px var(--sans); text-decoration: none; padding: 14px 22px; border: 3px solid var(--ink); }
+.cv-dl a:first-child { background: var(--red); border-color: var(--red); color: #fff; }
+.cv-dl a:hover, .cv-dl a:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+@media (max-width: 700px) { .seek-grid { grid-template-columns: 1fr 1fr; } }
+.kp .exec span { overflow: hidden; text-overflow: ellipsis; }
