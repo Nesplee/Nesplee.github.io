@@ -1,8 +1,8 @@
-import { pickLang, applyLang } from './i18n.js?v=f3953f36ff';
-import { revealContact } from './contact.js?v=f3953f36ff';
-import { mountLine } from './line.js?v=f3953f36ff';
-import { STRINGS } from './strings.js?v=f3953f36ff';
-import { mountBoard } from './board.js?v=f3953f36ff';
+import { pickLang, applyLang } from './i18n.js?v=e0f784ef9d';
+import { revealContact } from './contact.js?v=e0f784ef9d';
+import { mountLine } from './line.js?v=e0f784ef9d';
+import { STRINGS } from './strings.js?v=e0f784ef9d';
+import { mountBoard } from './board.js?v=e0f784ef9d';
 
 // GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
 try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
@@ -51,7 +51,7 @@ const board = document.querySelector('.board');
 if (board) mountBoard(board);
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=f3953f36ff').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=e0f784ef9d').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
 
 // certificates block: the big number counts up once, when it comes into view
 const counter = document.querySelector('[data-count]');
@@ -73,7 +73,8 @@ if (h1 && disc) {
   const ghost = document.createElement('div');
   ghost.className = 'ghost';
   ghost.setAttribute('aria-hidden', 'true');
-  ghost.append(...[...h1.childNodes].map((n) => n.cloneNode(true))); // keeps data-i18n: language switches update it too
+  ghost.append(...[...h1.childNodes].map((n) => n.cloneNode(true)));
+  ghost.querySelectorAll('a').forEach((a) => { a.tabIndex = -1; }); // the copy is decoration: keep its links out of keyboard focus // keeps data-i18n: language switches update it too
   h1.after(ghost);
   const clip = () => {
     const d = disc.getBoundingClientRect(), g = ghost.getBoundingClientRect();

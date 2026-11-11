@@ -1,5 +1,5 @@
-import { el, reduced, fmtEUR, fmtPct, fmtDate } from './svg.js?v=f3953f36ff';
-import { splitGaps, change } from './series.js?v=f3953f36ff';
+import { el, reduced, fmtEUR, fmtPct, fmtDate } from './svg.js?v=e0f784ef9d';
+import { splitGaps, change } from './series.js?v=e0f784ef9d';
 
 // Real CardMarket trend prices exported from the owner's tracker API (data/tracker.json),
 // plus an animated sketch of the pipeline described in the card-price-tracker README.
