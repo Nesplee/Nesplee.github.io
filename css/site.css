@@ -437,3 +437,4 @@ section.proj[id] { scroll-margin-top: 20px; }
 .kp .exec span { overflow: hidden; text-overflow: ellipsis; }
 .brand { white-space: nowrap; } @media (max-width: 1100px) { .toc { gap: 14px; font-size: 13px; } }
 .toc a { white-space: nowrap; } @media (max-width: 1100px) { .toc span:first-child { display: none; } }
+.kicker-dark .p-word { display: block; font: 900 clamp(34px, 4vw, 60px)/1 var(--sans); letter-spacing: -.04em; text-transform: none; color: var(--screen-ink); margin-bottom: 10px; }
