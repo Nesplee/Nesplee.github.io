@@ -8,15 +8,15 @@
   <title>Dimitri Nguyen — du service en salle au service en prod</title>
   <meta name="description" content="Dimitri Nguyen, développeur formé à 42 Lausanne : projets jouables et services en production, avec leur propre code.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e3241b'/%3E%3Ctext x='16' y='21.5' font-family='Helvetica,Arial' font-size='14' font-weight='900' text-anchor='middle' fill='%23fff'%3EDN%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/site.css?v=1deb225520">
-  <script type="module" src="js/main.js?v=1deb225520"></script>
+  <link rel="stylesheet" href="css/site.css?v=ed14fd1ea7">
+  <script type="module" src="js/main.js?v=ed14fd1ea7"></script>
 </head>
 <body>
   <nav class="top" aria-label="Navigation">
     <a class="brand" href="#top">Dimitri Nguyen</a>
     <ol class="toc">
       <li><a href="#st-resto"><span>01</span> <span data-i18n="toc.path">Parcours</span></a></li>
-      <li><a href="#st-pushswap"><span>03</span> <span data-i18n="toc.school">École 42</span></a></li>
+      <li><a href="#st-42"><span>02</span> <span data-i18n="toc.school">École 42</span></a></li>
       <li><a href="#st-tracker"><span>09</span> <span data-i18n="toc.prod">En production</span></a></li>
       <li><a href="#st-certs"><span>21</span> <span data-i18n="toc.certs">Certifications</span></a></li>
       <li><a href="#st-contact"><span>—</span> <span data-i18n="toc.contact">Contact</span></a></li>
@@ -69,7 +69,7 @@
           <div class="lede" data-i18n-html="resto.text"></div>
           <ul class="tickets" aria-hidden="true">
             <li class="ticket">TABLE 12<br>— — — —<br>2012<br><span data-i18n="resto.t1">premier service</span></li>
-            <li class="ticket">TABLE 14<br>— — — —<br>2014 → 2024<br><span data-i18n="resto.t2">manager</span></li>
+            <li class="ticket long">TABLE 14<br>— — — —<br>2014 → 2024<br><b data-i18n="resto.t2">manager</b><br><span class="tl">1x <span data-i18n="resto.t2a">gestion de la clientèle</span></span><span class="tl">1x <span data-i18n="resto.t2b">gestion du personnel</span></span><span class="tl">1x <span data-i18n="resto.t2c">gestion des stocks</span></span><span class="tl">1x <span data-i18n="resto.t2d">clôture des caisses</span></span><span class="tl">1x <span data-i18n="resto.t2e">service fluide et soigné</span></span><span class="tl">1x <span data-i18n="resto.t2f">bonne humeur</span></span>— — — —<br><span class="tl tot"><span data-i18n="resto.t2total">total</span> <span data-i18n="resto.t2years">10 ans</span></span></li>
             <li class="ticket">TABLE 42<br>— — — —<br>10.2024<br><span data-i18n="resto.t3">nouvelle carte</span></li>
           </ul>
         </div>
@@ -80,9 +80,17 @@
       <span class="station" aria-hidden="true"></span>
       <header class="phead"><span class="idx">02</span><div class="ptitle"><div class="date" data-i18n="42.date">oct. 2024</div><h2 id="h-42" data-i18n="42.title">Entrée à 42 Lausanne</h2></div></header>
       <div class="lede wide-lede" data-i18n-html="42.text"></div>
+      <ol class="board">
+        <li><button type="button" data-open="st-pushswap" aria-controls="st-pushswap" aria-expanded="false"><span class="n">03</span><span class="ico"><svg aria-hidden="true"><use href="img/projects.svg#pushswap"/></svg></span><span class="nm"><b>Push_swap</b><span class="k">C · <span data-i18n="tag.algo">algorithmie</span></span></span><span class="g">125</span></button></li>
+        <li><button type="button" data-open="st-solong" aria-controls="st-solong" aria-expanded="false"><span class="n">04</span><span class="ico"><img src="img/so_long-player.png" alt="" width="32" height="32" class="pix"></span><span class="nm"><b>So_long</b><span class="k">C · MiniLibX</span></span><span class="g">125</span></button></li>
+        <li><button type="button" data-open="st-philo" aria-controls="st-philo" aria-expanded="false"><span class="n">05</span><span class="ico"><svg aria-hidden="true"><use href="img/projects.svg#philo"/></svg></span><span class="nm"><b>Philosophers</b><span class="k">C · threads</span></span><span class="g">100</span></button></li>
+        <li><button type="button" data-open="st-minishell" aria-controls="st-minishell" aria-expanded="false"><span class="n">06</span><span class="ico"><svg aria-hidden="true"><use href="img/projects.svg#minishell"/></svg></span><span class="nm"><b>Minishell</b><span class="k">C · fork · pipes</span></span><span class="g">125</span></button></li>
+        <li><button type="button" data-open="st-cub3d" aria-controls="st-cub3d" aria-expanded="false"><span class="n">07</span><span class="ico"><svg aria-hidden="true"><use href="img/projects.svg#cub3d"/></svg></span><span class="nm"><b>Cub3D</b><span class="k">C · raycasting</span></span><span class="g">125</span></button></li>
+        <li><button type="button" data-open="st-inception" aria-controls="st-inception" aria-expanded="false"><span class="n">08</span><span class="ico"><svg aria-hidden="true"><use href="img/projects.svg#inception"/></svg></span><span class="nm"><b>Inception</b><span class="k">Docker · NGINX</span></span><span class="g">125</span></button></li>
+      </ol>
     </section>
 
-    <section class="stop wrap proj" id="st-pushswap" aria-labelledby="h-pushswap">
+    <section class="stop wrap proj" id="st-pushswap" hidden aria-labelledby="h-pushswap">
       <span class="station" aria-hidden="true"></span>
       <header class="phead">
         <span class="idx">03</span>
@@ -108,14 +116,14 @@
       </div>
     </section>
 
-    <section class="stop wrap proj" id="st-solong" aria-labelledby="h-solong">
+    <section class="stop wrap proj" id="st-solong" hidden aria-labelledby="h-solong">
       <span class="station" aria-hidden="true"></span>
       <header class="phead">
         <span class="idx">04</span>
         <div class="ptitle"><h2 id="h-solong"><img class="picon pix" src="img/so_long-player.png" alt="" width="32" height="32">So_long</h2><p class="quote" lang="en">“survived mlx. don't recommend”</p></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="solong.date">janv. 2025 · cercle 2</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
-      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=1deb225520" data-game-aspect="1632 / 256" data-game-title="so_long">
+      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=ed14fd1ea7" data-game-aspect="1632 / 256" data-game-title="so_long">
         <div class="bar"><i></i><i></i><i></i><span data-i18n="solong.bar">so_long — mon jeu, jouable dans votre navigateur</span></div>
         <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/so_long.webp" alt="so_long : capture du jeu" width="1632" height="256"></div>
         <div class="controls">
@@ -135,7 +143,7 @@
       </div>
     </section>
 
-    <section class="stop wrap proj" id="st-philo" aria-labelledby="h-philo">
+    <section class="stop wrap proj" id="st-philo" hidden aria-labelledby="h-philo">
       <span class="station" aria-hidden="true"></span>
       <header class="phead">
         <span class="idx">05</span>
@@ -166,7 +174,7 @@
         </div>
       </div>
     </section>
-    <section class="stop wrap proj" id="st-minishell" aria-labelledby="h-minishell">
+    <section class="stop wrap proj" id="st-minishell" hidden aria-labelledby="h-minishell">
       <span class="station" aria-hidden="true"></span>
       <header class="phead">
         <span class="idx">06</span>
@@ -198,7 +206,7 @@
       </div>
     </section>
 
-    <section class="stop wrap proj" id="st-cub3d" aria-labelledby="h-cub3d">
+    <section class="stop wrap proj" id="st-cub3d" hidden aria-labelledby="h-cub3d">
       <span class="station" aria-hidden="true"></span>
       <header class="phead">
         <span class="idx">07</span>
@@ -206,7 +214,7 @@
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="cub3d.date">oct. 2025 · cercle 4</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
       <div class="project">
-        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=1deb225520" data-game-aspect="16 / 9" data-game-title="cub3d">
+        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=ed14fd1ea7" data-game-aspect="16 / 9" data-game-title="cub3d">
           <div class="bar"><i></i><i></i><i></i><span data-i18n="cub3d.bar">cub3d — mon moteur, jouable dans votre navigateur</span></div>
           <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/cub3d.webp" alt="cub3d : capture du jeu" width="1280" height="720"></div>
           <div class="controls">

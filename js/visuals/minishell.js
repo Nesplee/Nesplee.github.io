@@ -1,5 +1,5 @@
-import { treeFor } from './minishell-tree.js?v=1deb225520';
-import { el, reduced } from './svg.js?v=1deb225520';
+import { treeFor } from './minishell-tree.js?v=ed14fd1ea7';
+import { el, reduced } from './svg.js?v=ed14fd1ea7';
 
 // Replays a real session of the owner's minishell (recordings/minishell.json): the terminal as it was,
 // and, for each command, the processes it forked (logged by link-time wrappers, code unchanged).

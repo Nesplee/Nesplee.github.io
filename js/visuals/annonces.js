@@ -1,4 +1,4 @@
-import { el, reduced, fmtDate } from './svg.js?v=1deb225520';
+import { el, reduced, fmtDate } from './svg.js?v=ed14fd1ea7';
 
 // Real counts from the owner's annonces database (data/annonces.json: per source host and per day,
 // last 30 days — no company names or titles), shown as a funnel, two charts and a digest preview.
