@@ -8,8 +8,8 @@
   <title>Dimitri Nguyen — du service en salle au service en prod</title>
   <meta name="description" content="Dimitri Nguyen, développeur formé à 42 Lausanne : projets jouables et services en production, avec leur propre code.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e3241b'/%3E%3Ctext x='16' y='21.5' font-family='Helvetica,Arial' font-size='14' font-weight='900' text-anchor='middle' fill='%23fff'%3EDN%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/site.css?v=6233b9ac06">
-  <script type="module" src="js/main.js?v=6233b9ac06"></script>
+  <link rel="stylesheet" href="css/site.css?v=1d70629a91">
+  <script type="module" src="js/main.js?v=1d70629a91"></script>
 </head>
 <body>
   <nav class="top" aria-label="Navigation">
@@ -17,7 +17,8 @@
     <ol class="toc">
       <li><a href="#st-resto"><span>01</span> <span data-i18n="toc.path">Parcours</span></a></li>
       <li><a href="#st-42"><span>02</span> <span data-i18n="toc.school">École 42</span></a></li>
-      <li><a href="#st-tracker"><span>09</span> <span data-i18n="toc.prod">En production</span></a></li>
+      <li><a href="#st-kepler"><span>09</span> <span>Kepler</span></a></li>
+      <li><a href="#st-tracker"><span>10</span> <span data-i18n="toc.prod">En production</span></a></li>
       <li><a href="#st-certs"><span>21</span> <span data-i18n="toc.certs">Certifications</span></a></li>
       <li><a href="#st-contact"><span>—</span> <span data-i18n="toc.contact">Contact</span></a></li>
     </ol>
@@ -110,7 +111,7 @@
         <div class="ptitle"><h2 id="h-solong"><img class="picon pix" src="img/so_long-player.png" alt="" width="32" height="32">So_long</h2><p class="quote" lang="en">“survived mlx. don't recommend”</p></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="solong.date">janv. 2025 · cercle 2</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
-      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=6233b9ac06" data-game-aspect="1632 / 256" data-game-title="so_long">
+      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=1d70629a91" data-game-aspect="1632 / 256" data-game-title="so_long">
         <div class="bar"><i></i><i></i><i></i><span data-i18n="solong.bar">so_long — mon jeu, jouable dans votre navigateur</span></div>
         <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/so_long.webp" alt="so_long : capture du jeu" width="1632" height="256"></div>
         <div class="controls">
@@ -201,7 +202,7 @@
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="cub3d.date">oct. 2025 · cercle 4</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
       <div class="project">
-        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=6233b9ac06" data-game-aspect="16 / 9" data-game-title="cub3d">
+        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=1d70629a91" data-game-aspect="16 / 9" data-game-title="cub3d">
           <div class="bar"><i></i><i></i><i></i><span data-i18n="cub3d.bar">cub3d — mon moteur, jouable dans votre navigateur</span></div>
           <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/cub3d.webp" alt="cub3d : capture du jeu" width="1280" height="720"></div>
           <div class="controls">
@@ -246,10 +247,30 @@
       </div>
     </section>
 
-    <section class="stop wrap proj dark" id="st-tracker" aria-labelledby="h-tracker">
+    <section class="stop wrap proj" id="st-kepler" aria-labelledby="h-kepler">
       <span class="station" aria-hidden="true"></span>
       <header class="phead">
         <span class="idx">09</span>
+        <div class="ptitle"><h2 id="h-kepler"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#kepler"/></svg>Kepler Cheuvreux</h2><p class="quote" data-i18n="kepler.role">FullStack Engineer · stagiaire</p></div>
+        <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="kepler.date">févr. 2026 → janv. 2027</dd></div><div><dt data-i18n="meta.contract">Contrat</dt><dd data-i18n="kepler.contract">Stage · 12 mois</dd></div></dl>
+      </header>
+      <div class="screen wide" data-visual="kepler">
+        <div class="bar"><i></i><i></i><i></i><span data-i18n="kp.bar">kepler — le circuit de la donnée, en schéma</span></div>
+        <svg data-kp="flow" class="flow-svg" viewBox="0 0 840 220" role="img" data-i18n-aria="kp.aria" aria-label="Les données arrivent par API et SFTP, passent par les ETL Airflow et LexiFi, puis par le contrôle des prix : les rapports partent aux clients, les anomalies déclenchent une relance de l’émetteur"></svg>
+        <p class="note" data-i18n="kp.note">Schéma illustratif : aucune donnée, aucun nom de produit, rien d’interne.</p>
+      </div>
+      <div class="project-text cols">
+        <div class="body" data-i18n-html="kepler.body"></div>
+        <div>
+          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#apacheairflow"/></svg>Airflow</li><li><svg aria-hidden="true"><use href="img/tech.svg#n8n"/></svg>n8n</li><li><svg aria-hidden="true"><use href="img/tech.svg#python"/></svg>Python</li><li>LexiFi</li><li>jsreport</li><li>API · SFTP</li><li>MCP</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop wrap proj dark" id="st-tracker" aria-labelledby="h-tracker">
+      <span class="station" aria-hidden="true"></span>
+      <header class="phead">
+        <span class="idx">10</span>
         <div class="ptitle"><span class="badge-prod" data-i18n="prod.badge">en production</span><h2 id="h-tracker"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#tracker"/></svg>card-price-tracker</h2></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="tracker.date">depuis août 2026 · projet perso</dd></div><div><dt data-i18n="meta.commits">Commits</dt><dd>126</dd></div></dl>
       </header>
@@ -280,7 +301,7 @@
     <section class="stop wrap proj dark" id="st-annonces" aria-labelledby="h-annonces">
       <span class="station" aria-hidden="true"></span>
       <header class="phead">
-        <span class="idx">10</span>
+        <span class="idx">11</span>
         <div class="ptitle"><span class="badge-prod" data-i18n="prod.badge">en production</span><h2 id="h-annonces"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#annonces"/></svg>annonces</h2><p class="repo-name">Daily-Jobs-Offers</p></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="annonces.date">depuis août 2026 · projet perso</dd></div><div><dt data-i18n="meta.commits">Commits</dt><dd>74</dd></div></dl>
       </header>
