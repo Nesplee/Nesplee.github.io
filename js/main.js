@@ -1,8 +1,8 @@
-import { pickLang, applyLang } from './i18n.js?v=bc9d6a2890';
-import { revealContact } from './contact.js?v=bc9d6a2890';
-import { mountLine } from './line.js?v=bc9d6a2890';
-import { STRINGS } from './strings.js?v=bc9d6a2890';
-import { mountBoard } from './board.js?v=bc9d6a2890';
+import { pickLang, applyLang } from './i18n.js?v=24c3c0b506';
+import { revealContact } from './contact.js?v=24c3c0b506';
+import { mountLine } from './line.js?v=24c3c0b506';
+import { STRINGS } from './strings.js?v=24c3c0b506';
+import { mountBoard } from './board.js?v=24c3c0b506';
 
 // GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
 try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
@@ -51,7 +51,7 @@ const board = document.querySelector('.board');
 if (board) mountBoard(board);
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=bc9d6a2890').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=24c3c0b506').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
 
 // certificates block: the big number counts up once, when it comes into view
 const counter = document.querySelector('[data-count]');
