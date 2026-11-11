@@ -8,8 +8,8 @@
   <title>Dimitri Nguyen — du service en salle au service en prod</title>
   <meta name="description" content="Dimitri Nguyen, développeur formé à 42 Lausanne : projets jouables et services en production, avec leur propre code.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e3241b'/%3E%3Ctext x='16' y='21.5' font-family='Helvetica,Arial' font-size='14' font-weight='900' text-anchor='middle' fill='%23fff'%3EDN%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/site.css?v=1d70629a91">
-  <script type="module" src="js/main.js?v=1d70629a91"></script>
+  <link rel="stylesheet" href="css/site.css?v=23dedbd258">
+  <script type="module" src="js/main.js?v=23dedbd258"></script>
 </head>
 <body>
   <nav class="top" aria-label="Navigation">
@@ -111,7 +111,7 @@
         <div class="ptitle"><h2 id="h-solong"><img class="picon pix" src="img/so_long-player.png" alt="" width="32" height="32">So_long</h2><p class="quote" lang="en">“survived mlx. don't recommend”</p></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="solong.date">janv. 2025 · cercle 2</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
-      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=1d70629a91" data-game-aspect="1632 / 256" data-game-title="so_long">
+      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=23dedbd258" data-game-aspect="1632 / 256" data-game-title="so_long">
         <div class="bar"><i></i><i></i><i></i><span data-i18n="solong.bar">so_long — mon jeu, jouable dans votre navigateur</span></div>
         <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/so_long.webp" alt="so_long : capture du jeu" width="1632" height="256"></div>
         <div class="controls">
@@ -202,7 +202,7 @@
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="cub3d.date">oct. 2025 · cercle 4</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
       <div class="project">
-        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=1d70629a91" data-game-aspect="16 / 9" data-game-title="cub3d">
+        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=23dedbd258" data-game-aspect="16 / 9" data-game-title="cub3d">
           <div class="bar"><i></i><i></i><i></i><span data-i18n="cub3d.bar">cub3d — mon moteur, jouable dans votre navigateur</span></div>
           <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/cub3d.webp" alt="cub3d : capture du jeu" width="1280" height="720"></div>
           <div class="controls">
@@ -254,17 +254,37 @@
         <div class="ptitle"><h2 id="h-kepler"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#kepler"/></svg>Kepler Cheuvreux</h2><p class="quote" data-i18n="kepler.role">FullStack Engineer · stagiaire</p></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="kepler.date">févr. 2026 → janv. 2027</dd></div><div><dt data-i18n="meta.contract">Contrat</dt><dd data-i18n="kepler.contract">Stage · 12 mois</dd></div></dl>
       </header>
-      <div class="screen wide" data-visual="kepler">
-        <div class="bar"><i></i><i></i><i></i><span data-i18n="kp.bar">kepler — le circuit de la donnée, en schéma</span></div>
-        <svg data-kp="flow" class="flow-svg" viewBox="0 0 840 220" role="img" data-i18n-aria="kp.aria" aria-label="Les données arrivent par API et SFTP, passent par les ETL Airflow et LexiFi, puis par le contrôle des prix : les rapports partent aux clients, les anomalies déclenchent une relance de l’émetteur"></svg>
-        <p class="note" data-i18n="kp.note">Schéma illustratif : aucune donnée, aucun nom de produit, rien d’interne.</p>
+      <p class="lede kp-lede" data-i18n="kepler.lede"></p>
+      <div class="kp" data-visual="kepler">
+        <section class="kp-band main" aria-labelledby="kp-h1">
+          <header><div class="n">01</div><h3 id="kp-h1" data-i18n="kp.b1"></h3><p data-i18n="kp.b1d"></p></header>
+          <div class="bento">
+          <article class="tile dark s2 r2"><span class="k">ETL · Airflow · API &amp; SFTP</span><h3 data-i18n="kp.etl"></h3><div class="runs" data-kp="runs"></div><div class="axis"><span></span><div><span data-i18n="kp.past"></span><span data-i18n="kp.today"></span></div></div><div class="legend"><span data-i18n="kp.done"></span><span class="r" data-i18n="kp.retried"></span><span class="n" data-i18n="kp.mine"></span></div><div class="d" data-i18n-html="kp.etld"></div></article>
+          <article class="tile red s2"><span class="k">Workflow n8n · LexiFi</span><div class="big" data-kp="count">6&#8239;000+</div><div class="plog" data-kp="plog"></div><div class="d" data-i18n-html="kp.ctrld"></div></article>
+          <article class="tile dark"><span class="k">n8n</span><h3 data-i18n="kp.pipes"></h3><div class="exec" data-kp="exec"></div><div class="d" data-i18n-html="kp.pipesd"></div></article>
+          <article class="tile dark"><span class="k">Claude · skills · MCP</span><h3 data-i18n="kp.ai"></h3><div class="term" data-kp="term"></div><div class="d" data-i18n-html="kp.aid"></div></article>
+          </div>
+        </section>
+        <section class="kp-band" aria-labelledby="kp-h2">
+          <header><div class="n">02</div><h3 id="kp-h2" data-i18n="kp.b2"></h3><p data-i18n="kp.b2d"></p></header>
+          <div class="bento">
+          <article class="tile light"><span class="k">jsreport</span><h3 data-i18n="kp.idx"></h3><div class="chart"><svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path class="a" d="M0 79H200M0 40H200M0 1H200"/><path class="l" d="M0 62L18 58L34 60L52 48L70 51L88 40L104 43L122 30L140 34L158 22L176 26L200 12"/></svg></div><div class="d" data-i18n-html="kp.idxd"></div></article>
+          <article class="tile light"><span class="k">Clients</span><h3 data-i18n="kp.cli"></h3><div class="docs" aria-hidden="true"><i></i><i></i><i></i></div><div class="d" data-i18n-html="kp.clid"></div></article>
+          <article class="tile light s2"><span class="k">LexiFi</span><h3 data-i18n="kp.grid"></h3><div class="sheet" data-kp="sheet" aria-hidden="true"></div><div class="d" data-i18n-html="kp.gridd"></div></article>
+          </div>
+        </section>
+        <section class="kp-band" aria-labelledby="kp-h3">
+          <header><div class="n">03</div><h3 id="kp-h3" data-i18n="kp.b3"></h3><p data-i18n="kp.b3d"></p></header>
+          <div class="bento">
+          <article class="tile dark"><span class="k">Monitoring</span><h3 data-i18n="kp.mon"></h3><div class="leds" data-kp="leds"></div><div class="d" data-i18n-html="kp.mond"></div></article>
+          <article class="tile light"><span class="k">Data quality</span><h3 data-i18n="kp.sup"></h3><div class="qa" aria-hidden="true"><div class="q" data-i18n="kp.supq"></div><div class="a" data-i18n="kp.supa"></div></div><div class="d" data-i18n-html="kp.supd"></div></article>
+          <article class="tile light"><span class="k">Access</span><h3 data-i18n="kp.acc"></h3><div class="acc" aria-hidden="true"><div><b>+</b><span data-i18n="kp.acc1"></span></div><div><b>~</b><span data-i18n="kp.acc2"></span></div><div><b>−</b><span data-i18n="kp.acc3"></span></div></div><div class="d" data-i18n-html="kp.accd"></div></article>
+          <article class="tile dark"><span class="k" data-i18n="kp.teamk"></span><h3 data-i18n="kp.team"></h3><div class="orbit"><svg data-kp="orbit" viewBox="0 0 200 110" aria-hidden="true"></svg></div></article>
+          </div>
+        </section>
+        <p class="kp-note" data-i18n="kp.note"></p>
       </div>
-      <div class="project-text cols">
-        <div class="body" data-i18n-html="kepler.body"></div>
-        <div>
-          <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#apacheairflow"/></svg>Airflow</li><li><svg aria-hidden="true"><use href="img/tech.svg#n8n"/></svg>n8n</li><li><svg aria-hidden="true"><use href="img/tech.svg#python"/></svg>Python</li><li>LexiFi</li><li>jsreport</li><li>API · SFTP</li><li>MCP</li></ul>
-        </div>
-      </div>
+      <ul class="tags"><li><svg aria-hidden="true"><use href="img/tech.svg#apacheairflow"/></svg>Airflow</li><li><svg aria-hidden="true"><use href="img/tech.svg#n8n"/></svg>n8n</li><li><svg aria-hidden="true"><use href="img/tech.svg#python"/></svg>Python</li><li>LexiFi</li><li>jsreport</li><li>API · SFTP</li><li>MCP</li></ul>
     </section>
 
     <section class="stop wrap proj dark" id="st-tracker" aria-labelledby="h-tracker">
