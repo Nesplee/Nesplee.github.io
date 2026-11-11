@@ -77,7 +77,7 @@ nav.top { position: sticky; top: 0; z-index: 10; display: grid; grid-template-co
 .facts span { font: 500 13px var(--sans); text-transform: uppercase; letter-spacing: .06em; }
 @media (max-width: 900px) {
   /* mobile: photo first, the title only overlaps the bottom of the disc (the shoulders), never the face */
-  .hero h1, .hero .ghost { grid-column: 1 / -1; grid-row: 2; align-self: start; margin-top: -11vw; font-size: clamp(42px, 12.6vw, 96px); }
+  .hero h1, .hero .ghost { grid-column: 1 / -1; grid-row: 2; align-self: start; margin-top: 5vw; font-size: clamp(34px, 9.6vw, 80px); }
   .disc { grid-column: 1 / -1; grid-row: 1; justify-self: end; width: min(70vw, 340px); margin-top: 3vh; opacity: 1; }
   .hero .intro, .facts { grid-column: 1 / -1; } .facts { margin-top: 20px; }
 }
