@@ -1,5 +1,5 @@
-import { applyOp, shuffled } from './pushswap-ops.js?v=5aef843221';
-import { runProgram } from '../run-wasm.js?v=5aef843221';
+import { applyOp, shuffled } from './pushswap-ops.js?v=6f1248b217';
+import { runProgram } from '../run-wasm.js?v=6f1248b217';
 
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
