@@ -85,7 +85,7 @@ nav.top { position: sticky; top: 0; z-index: 10; display: grid; grid-template-co
 /* letters that cross the photo disc turn red: a copy of the title, clipped to the disc (site/js/main.js) */
 .hero .ghost { color: var(--red); z-index: 3; pointer-events: none; user-select: none; clip-path: circle(0); }
 .hero .ghost em { color: var(--red); }
-@media (min-width: 901px) { .hero .ghost { display: none; } } /* desktop keeps the original black title over the photo */
+/* desktop too: letters over the photo turn red (only the first letters of the last words reach it) */
 
 /* ---------- ticker ---------- */
 .ticker { background: var(--ink); color: var(--paper); overflow: hidden; border-block: 1px solid var(--ink); }
@@ -437,7 +437,6 @@ section.proj[id] { scroll-margin-top: 20px; }
 .kp .exec span { overflow: hidden; text-overflow: ellipsis; }
 .brand { white-space: nowrap; } @media (max-width: 1100px) { .toc { gap: 14px; font-size: 13px; } }
 .toc a { white-space: nowrap; } @media (max-width: 1100px) { .toc span:first-child { display: none; } }
-.kicker-dark .p-word { display: block; font: 900 clamp(34px, 4vw, 60px)/1 var(--sans); letter-spacing: -.04em; text-transform: none; color: var(--screen-ink); margin-bottom: 10px; }
 
 /* hero: the P words climb from bottom to top: each line starts one step further right than the line below */
 .hero h1, .hero .ghost { --step: .62em; width: max-content; max-width: 100%; justify-self: start; }
@@ -452,5 +451,11 @@ section.proj[id] { scroll-margin-top: 20px; }
 /* desktop: photo on the left, the staircase of P words on the right, stepping away from the photo */
 @media (min-width: 901px) {
   .disc { grid-column: 1 / 6; justify-self: start; width: min(32vw, 440px); }
-  .hero h1 { grid-column: 5 / -1; justify-self: start; font-size: clamp(40px, 6.3vw, 106px); --step: .55em; }
+  .hero h1, .hero .ghost { grid-column: 5 / -1; justify-self: start; margin-left: -1.05em; font-size: clamp(40px, 6.3vw, 106px); --step: .74em; }
 }
+
+/* chapter words: each part of the page opens with its P word from the hero title */
+.chap { font: 900 clamp(40px, 5.4vw, 88px)/.9 var(--sans); letter-spacing: -.045em; margin: 0 0 22px; }
+.dark .chap { color: var(--screen-ink); }
+/* the title keeps its own colours over the photo: black, and red for Production. — no recoloured copy */
+.hero .ghost { display: none !important; }
