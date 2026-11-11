@@ -435,3 +435,5 @@ section.proj[id] { scroll-margin-top: 20px; }
 .cv-dl a:hover, .cv-dl a:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 @media (max-width: 700px) { .seek-grid { grid-template-columns: 1fr 1fr; } }
 .kp .exec span { overflow: hidden; text-overflow: ellipsis; }
+.brand { white-space: nowrap; } @media (max-width: 1100px) { .toc { gap: 14px; font-size: 13px; } }
+.toc a { white-space: nowrap; } @media (max-width: 1100px) { .toc span:first-child { display: none; } }
