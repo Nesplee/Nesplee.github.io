@@ -1,9 +1,9 @@
-import { pickLang, applyLang } from './i18n.js?v=a9ea34af8f';
-import { revealContact } from './contact.js?v=a9ea34af8f';
-import { mountGitLine } from './gitline.js?v=a9ea34af8f';
-import { STRINGS } from './strings.js?v=a9ea34af8f';
-import { mountBoard } from './board.js?v=a9ea34af8f';
-import { mountHero } from './hero.js?v=a9ea34af8f';
+import { pickLang, applyLang } from './i18n.js?v=a31d4b7c31';
+import { revealContact } from './contact.js?v=a31d4b7c31';
+import { mountGitLine } from './gitline.js?v=a31d4b7c31';
+import { STRINGS } from './strings.js?v=a31d4b7c31';
+import { mountBoard } from './board.js?v=a31d4b7c31';
+import { mountHero } from './hero.js?v=a31d4b7c31';
 
 // GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
 try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
@@ -51,7 +51,7 @@ const board = document.querySelector('.board');
 if (board) mountBoard(board);
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=a9ea34af8f').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=a31d4b7c31').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
 
 // certificates block: the big number counts up once, when it comes into view
 const counter = document.querySelector('[data-count]');
@@ -66,6 +66,12 @@ if (counter && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     requestAnimationFrame(step);
   }, { threshold: 0.5 }).observe(counter);
 }
+
+// the hero CV link follows the page language
+const cvLink = document.querySelector('[data-cv]');
+const setCv = () => { if (cvLink) cvLink.href = `cv/CV_Dimitri_Nguyen_${currentLang() === 'fr' ? 'FR' : 'EN'}.pdf`; };
+setCv();
+onLangChange(setCv);
 
 // Hero: on desktop the last words bite into the photo by about one letter (see hero.js)
 const h1 = document.querySelector('.hero h1'), disc = document.querySelector('.hero .disc');
