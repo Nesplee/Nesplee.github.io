@@ -456,3 +456,14 @@ section.proj[id] { scroll-margin-top: 20px; }
 .chap { font: 900 clamp(40px, 5.4vw, 88px)/.9 var(--sans); letter-spacing: -.045em; margin: 0 0 22px; }
 .dark .chap { color: var(--screen-ink); }
 @media (min-width: 701px) { .seek-grid .cantons { white-space: nowrap; } }
+
+/* guiding line as a git graph (site/js/gitline.js): the old rail only gives the position of main */
+.rail .track, .rail .fill, .station { display: none; }
+.gitline { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 3; overflow: visible; }
+.gitline path { fill: none; stroke-width: 3; stroke-linecap: round; }
+.gl-base path { stroke: #8f8c8680; }
+.gl-read path { stroke: var(--red); }
+.gl-dot, .gl-merge { fill: var(--paper); stroke: #8f8c86; stroke-width: 3; transition: fill .3s, stroke .3s; }
+.gl-merge { fill: none; }
+.gl-dot.on { fill: var(--red); stroke: var(--red); }
+.gl-merge.on { stroke: var(--red); }
