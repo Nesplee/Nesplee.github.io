@@ -1,5 +1,5 @@
-import { stateAt } from './philo-state.js?v=88b7f020e9';
-import { el, reduced } from './svg.js?v=88b7f020e9';
+import { stateAt } from './philo-state.js?v=bfb5fa888b';
+import { el, reduced } from './svg.js?v=bfb5fa888b';
 
 // Replays a real run of the owner's philo binary (recordings/philo-*.json): table, forks held, meals,
 // and the very lines the program printed, in time.
