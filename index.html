@@ -8,8 +8,8 @@
   <title>Dimitri Nguyen — du service en salle au service en prod</title>
   <meta name="description" content="Dimitri Nguyen, développeur formé à 42 Lausanne : projets jouables et services en production, avec leur propre code.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e3241b'/%3E%3Ctext x='16' y='21.5' font-family='Helvetica,Arial' font-size='14' font-weight='900' text-anchor='middle' fill='%23fff'%3EDN%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/site.css?v=23dedbd258">
-  <script type="module" src="js/main.js?v=23dedbd258"></script>
+  <link rel="stylesheet" href="css/site.css?v=6fbadca40e">
+  <script type="module" src="js/main.js?v=6fbadca40e"></script>
 </head>
 <body>
   <nav class="top" aria-label="Navigation">
@@ -111,7 +111,7 @@
         <div class="ptitle"><h2 id="h-solong"><img class="picon pix" src="img/so_long-player.png" alt="" width="32" height="32">So_long</h2><p class="quote" lang="en">“survived mlx. don't recommend”</p></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="solong.date">janv. 2025 · cercle 2</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
-      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=23dedbd258" data-game-aspect="1632 / 256" data-game-title="so_long">
+      <div class="screen wide" data-visual="game" data-game-page="games/so_long.html?v=6fbadca40e" data-game-aspect="1632 / 256" data-game-title="so_long">
         <div class="bar"><i></i><i></i><i></i><span data-i18n="solong.bar">so_long — mon jeu, jouable dans votre navigateur</span></div>
         <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/so_long.webp" alt="so_long : capture du jeu" width="1632" height="256"></div>
         <div class="controls">
@@ -202,7 +202,7 @@
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="cub3d.date">oct. 2025 · cercle 4</dd></div><div><dt data-i18n="meta.grade">Note</dt><dd>125/100</dd></div></dl>
       </header>
       <div class="project">
-        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=23dedbd258" data-game-aspect="16 / 9" data-game-title="cub3d">
+        <div class="screen" data-visual="game" data-game-page="games/cub3d.html?v=6fbadca40e" data-game-aspect="16 / 9" data-game-title="cub3d">
           <div class="bar"><i></i><i></i><i></i><span data-i18n="cub3d.bar">cub3d — mon moteur, jouable dans votre navigateur</span></div>
           <div data-game="stage"><img class="poster" data-game="poster" src="img/posters/cub3d.webp" alt="cub3d : capture du jeu" width="1280" height="720"></div>
           <div class="controls">
@@ -325,21 +325,32 @@
         <div class="ptitle"><span class="badge-prod" data-i18n="prod.badge">en production</span><h2 id="h-annonces"><svg class="picon" aria-hidden="true"><use href="img/projects.svg#annonces"/></svg>annonces</h2><p class="repo-name">Daily-Jobs-Offers</p></div>
         <dl class="meta"><div><dt data-i18n="meta.date">Date</dt><dd data-i18n="annonces.date">depuis août 2026 · projet perso</dd></div><div><dt data-i18n="meta.commits">Commits</dt><dd>74</dd></div></dl>
       </header>
-      <div class="screen wide" data-visual="annonces">
-        <div class="bar"><i></i><i></i><i></i><span data-i18n="an.bar">annonces — volumes réels des 30 derniers jours</span></div>
-        <div class="kpis-dark">
-          <div><b data-an="total">245</b><small data-i18n="an.k1">offres collectées en 30 jours</small></div>
-          <div><b data-an="nsrc">10</b><small data-i18n="an.k2">sites d’origine</small></div>
-          <div><b>8 h</b><small data-i18n="an.k3">chaque matin de semaine</small></div>
-          <div><b>0</b><small data-i18n="an.k4">intervention manuelle</small></div>
-        </div>
-        <svg data-an="funnel" class="flow-svg" viewBox="0 0 600 220" role="img" data-i18n-aria="an.aria" aria-label="Les offres de chaque source passent par n8n, le dédoublonnage puis le digest"></svg>
-        <div class="an-grid">
-          <figure><figcaption data-i18n="an.bytitle">Offres par site, 30 jours</figcaption><svg data-an="bars" role="img" data-i18n-aria="an.bytitle" aria-label="Offres par site"></svg></figure>
-          <figure><figcaption data-i18n="an.daytitle">Rythme quotidien</figcaption><svg data-an="days" viewBox="0 0 400 110" role="img" data-i18n-aria="an.daytitle" aria-label="Offres par jour"></svg></figure>
-          <figure class="digest" data-an="digest"><figcaption data-i18n="an.dgcap">Le digest du matin (aperçu)</figcaption><div class="mail"><b data-an="dgtitle"></b><ul></ul></div></figure>
+      <div class="une" data-visual="annonces">
+        <div class="mast"><div class="t"><span data-i18n="an.title">Le Digest</span><em>.</em></div><div class="m"><span data-an="edition"></span><br><span data-i18n="an.freq"></span></div></div>
+        <div class="rule"><span data-i18n="an.section"></span><span><span data-an="nsrc"></span> <span data-i18n="an.srcs"></span></span></div>
+        <div class="cols">
+          <div>
+            <p class="kick" data-i18n="an.kick1"></p>
+            <p class="head"><em data-an="total"></em> <span data-i18n="an.head"></span></p>
+            <p class="lead" data-i18n="an.lead"></p>
+            <p class="kick" data-i18n="an.kick2"></p>
+            <p class="head small" data-an="today"></p>
+            <div class="blur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div>
+            <p class="kick" data-i18n="an.kick3"></p>
+            <div class="cloud" data-an="cloud"></div>
+          </div>
+          <div>
+            <p class="kick" data-i18n="an.kick4"></p>
+            <div class="week" data-an="week"></div>
+            <p class="kick" data-i18n="an.kick5"></p>
+            <div class="rec" data-an="rec"></div>
+            <p class="lead" data-an="recd"></p>
+          </div>
         </div>
       </div>
+      <p class="une-note" data-i18n="an.note"></p>
       <div class="project-text cols">
         <div class="body" data-i18n-html="annonces.body"></div>
         <div>
