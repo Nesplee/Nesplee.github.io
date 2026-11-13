@@ -1,4 +1,4 @@
-import { reduced } from './svg.js?v=a31d4b7c31';
+import { reduced } from './svg.js?v=c570905f50';
 
 // Real counts from the owner's annonces database (data/annonces.json: per source host and per day,
 // last 30 days — no company names or titles), laid out as the front page of a morning paper.

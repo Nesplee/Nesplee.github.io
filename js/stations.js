@@ -1,13 +1,13 @@
 // Each [data-visual="<name>"] element gets its visual module, imported when it nears the viewport.
 const MODULES = {
-  pushswap: () => import('./visuals/pushswap.js?v=a31d4b7c31'),
-  game: () => import('./visuals/game.js?v=a31d4b7c31'),
-  tracker: () => import('./visuals/tracker.js?v=a31d4b7c31'),
-  annonces: () => import('./visuals/annonces.js?v=a31d4b7c31'),
-  philo: () => import('./visuals/philo.js?v=a31d4b7c31'),
-  minishell: () => import('./visuals/minishell.js?v=a31d4b7c31'),
-  inception: () => import('./visuals/inception.js?v=a31d4b7c31'),
-  kepler: () => import('./visuals/kepler.js?v=a31d4b7c31'),
+  pushswap: () => import('./visuals/pushswap.js?v=c570905f50'),
+  game: () => import('./visuals/game.js?v=c570905f50'),
+  tracker: () => import('./visuals/tracker.js?v=c570905f50'),
+  annonces: () => import('./visuals/annonces.js?v=c570905f50'),
+  philo: () => import('./visuals/philo.js?v=c570905f50'),
+  minishell: () => import('./visuals/minishell.js?v=c570905f50'),
+  inception: () => import('./visuals/inception.js?v=c570905f50'),
+  kepler: () => import('./visuals/kepler.js?v=c570905f50'),
 };
 
 export function mountStations(ctx) {

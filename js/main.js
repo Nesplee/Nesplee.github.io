@@ -1,9 +1,10 @@
-import { pickLang, applyLang } from './i18n.js?v=a31d4b7c31';
-import { revealContact } from './contact.js?v=a31d4b7c31';
-import { mountGitLine } from './gitline.js?v=a31d4b7c31';
-import { STRINGS } from './strings.js?v=a31d4b7c31';
-import { mountBoard } from './board.js?v=a31d4b7c31';
-import { mountHero } from './hero.js?v=a31d4b7c31';
+import { pickLang, applyLang } from './i18n.js?v=c570905f50';
+import { revealContact } from './contact.js?v=c570905f50';
+import { mountGitLine } from './gitline.js?v=c570905f50';
+import { STRINGS } from './strings.js?v=c570905f50';
+import { mountBoard } from './board.js?v=c570905f50';
+import { mountHero } from './hero.js?v=c570905f50';
+import { hit } from './count.js?v=c570905f50';
 
 // GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
 try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
@@ -51,7 +52,7 @@ const board = document.querySelector('.board');
 if (board) mountBoard(board);
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=a31d4b7c31').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=c570905f50').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
 
 // certificates block: the big number counts up once, when it comes into view
 const counter = document.querySelector('[data-count]');
@@ -76,3 +77,10 @@ onLangChange(setCv);
 // Hero: on desktop the last words bite into the photo by about one letter (see hero.js)
 const h1 = document.querySelector('.hero h1'), disc = document.querySelector('.hero .disc');
 if (h1 && disc) mountHero(h1, disc, onLangChange);
+
+// visit counting (GoatCounter, see count.js): the page view, then every CV download as an event
+hit(location.pathname);
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href*="cv/CV_Dimitri_Nguyen_"]');
+  if (a) hit(`cv-download-${a.getAttribute('href').includes('_FR') ? 'fr' : 'en'}`, true);
+});
