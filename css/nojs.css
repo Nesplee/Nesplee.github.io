@@ -1,0 +1,5 @@
+/* loaded only without JavaScript (<noscript> in index.html): everything that JS would open is open */
+html section.proj[hidden] { display: block !important; }
+.board, .controls, #lang-toggle { display: none !important; }
+.nojs-note { margin: 0; padding: 12px var(--gutter); background: var(--ink); color: var(--paper); font: 500 14px/1.5 var(--sans); }
+.nojs-note a { color: var(--paper); }

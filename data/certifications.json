@@ -1,0 +1,110 @@
+{
+ "issuer": "Anthropic Academy",
+ "certs": [
+  {
+   "title": "AI Capabilities and Limitations",
+   "url": "https://verify.skilljar.com/c/xzghuxxxbb5v",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency for Builders",
+   "url": "https://verify.skilljar.com/c/qspaujv4ytob",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency for Creative Work",
+   "url": "https://verify.skilljar.com/c/td2ym5mt77zq",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency for educators",
+   "url": "https://verify.skilljar.com/c/t7ihgyi4zsf9",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency for nonprofits",
+   "url": "https://verify.skilljar.com/c/ax7s4vf8jzei",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency for pK–12 Educators",
+   "url": "https://verify.skilljar.com/c/qg4t8x8w8n68",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency for Small Businesses",
+   "url": "https://verify.skilljar.com/c/jg3txwp7ptz6",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency for students",
+   "url": "https://verify.skilljar.com/c/wse4q37xb94s",
+   "track": "fluency"
+  },
+  {
+   "title": "AI Fluency: Framework & Foundations",
+   "url": "https://verify.skilljar.com/c/gnhruyipahv7",
+   "track": "fluency"
+  },
+  {
+   "title": "Building with the Claude API",
+   "url": "https://verify.skilljar.com/c/on2ittpb674u",
+   "track": "dev"
+  },
+  {
+   "title": "Claude 101",
+   "url": "https://verify.skilljar.com/c/eciifemyiqda",
+   "track": "fluency"
+  },
+  {
+   "title": "Claude Code 101",
+   "url": "https://verify.skilljar.com/c/r6u4i2bkmfa2",
+   "track": "dev"
+  },
+  {
+   "title": "Claude Code in Action",
+   "url": "https://verify.skilljar.com/c/tzmm47p3nwp4",
+   "track": "dev"
+  },
+  {
+   "title": "Claude Platform 101",
+   "url": "https://verify.skilljar.com/c/pcr244hsc5xk",
+   "track": "dev"
+  },
+  {
+   "title": "Deploying Claude Enterprise with Confidence: The five decisions that shape your rollout",
+   "url": "https://verify.skilljar.com/c/dgcxh89vbnvu",
+   "track": "fluency"
+  },
+  {
+   "title": "Introduction to agent skills",
+   "url": "https://verify.skilljar.com/c/igefgzos8rw8",
+   "track": "dev"
+  },
+  {
+   "title": "Introduction to Claude Cowork",
+   "url": "https://verify.skilljar.com/c/ic8zsy37qtf5",
+   "track": "fluency"
+  },
+  {
+   "title": "Introduction to Model Context Protocol",
+   "url": "https://verify.skilljar.com/c/rbew5jun6uq8",
+   "track": "dev"
+  },
+  {
+   "title": "Introduction to subagents",
+   "url": "https://verify.skilljar.com/c/ne5onvfkae23",
+   "track": "dev"
+  },
+  {
+   "title": "Model Context Protocol: Advanced Topics",
+   "url": "https://verify.skilljar.com/c/36ytwmrsea2b",
+   "track": "dev"
+  },
+  {
+   "title": "Teaching AI Fluency",
+   "url": "https://verify.skilljar.com/c/udmzhokxjeex",
+   "track": "fluency"
+  }
+ ]
+}
