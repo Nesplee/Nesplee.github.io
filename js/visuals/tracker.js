@@ -1,8 +1,8 @@
-import { el, reduced, fmtEUR, fmtPct, fmtDate, fmtDay } from './svg.js?v=6232fe3a51';
-import { splitGaps, change } from './series.js?v=6232fe3a51';
-import { getJson } from './data.js?v=6232fe3a51';
+import { el, reduced, fmtUSD, fmtPct, fmtDate, fmtDay } from './svg.js?v=785e5b2adf';
+import { splitGaps, change } from './series.js?v=785e5b2adf';
+import { getJson } from './data.js?v=785e5b2adf';
 
-// Real CardMarket trend prices exported from the owner's tracker API (data/tracker.json),
+// Real TCGplayer prices (mid, USD) exported from the owner's tracker API (data/tracker.json),
 // plus an animated sketch of the pipeline described in the card-price-tracker README.
 export async function mount(el0, { t, onLangChange, currentLang }) {
   const data = await getJson('../../data/tracker.json', import.meta.url);
@@ -36,7 +36,7 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
       b.innerHTML = `<span class="n"></span><span class="s"></span><svg viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"></svg><span class="p ${ch >= 0 ? 'up' : 'down'}"></span>`;
       b.querySelector('.n').textContent = c.name;
       b.querySelector('.s').textContent = c.set;
-      b.querySelector('.p').textContent = `${fmtEUR(c.points.at(-1)[1], lang)} · ${fmtPct(ch)}`;
+      b.querySelector('.p').textContent = `${fmtUSD(c.points.at(-1)[1], lang)} · ${fmtPct(ch)}`;
       sparkline(b.querySelector('svg'), c.points);
       b.addEventListener('click', () => { current = c; renderTabs(); renderChart(); });
       return b;
@@ -55,7 +55,7 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     for (let k = 0; k <= 3; k++) {
       const v = lo + ((hi - lo) * k) / 3;
       el(chart, 'line', { x1: L, x2: R, y1: Y(v), y2: Y(v), class: 'grid' });
-      el(chart, 'text', { x: 6, y: Y(v) + 4, class: 'ax' }, fmtEUR(v, lang));
+      el(chart, 'text', { x: 6, y: Y(v) + 4, class: 'ax' }, fmtUSD(v, lang));
     }
     for (const i of [0, Math.floor(pts.length / 2), pts.length - 1]) el(chart, 'text', { x: X(pts[i][0]), y: B + 20, class: 'ax', 'text-anchor': i === 0 ? 'start' : i === pts.length - 1 ? 'end' : 'middle' }, fmtDate(pts[i][0], lang));
     const segs = splitGaps(pts);
@@ -66,13 +66,13 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     for (let i = 1; i < segs.length; i++) el(chart, 'text', { x: (X(segs[i - 1].at(-1)[0]) + X(segs[i][0][0])) / 2, y: B - 8, class: 'ax', 'text-anchor': 'middle' }, t('tr.gap'));
     const max = pts.reduce((a, b) => (b[1] > a[1] ? b : a)), last = pts.at(-1);
     el(chart, 'circle', { cx: X(max[0]), cy: Y(max[1]), r: 5, class: 'peak' });
-    el(chart, 'text', { x: Math.min(X(max[0]), R - 60), y: Y(max[1]) - 12, class: 'lbl', 'text-anchor': 'middle' }, `${t('tr.peak')} ${fmtEUR(max[1], lang)}`);
+    el(chart, 'text', { x: Math.min(X(max[0]), R - 60), y: Y(max[1]) - 12, class: 'lbl', 'text-anchor': 'middle' }, `${t('tr.peak')} ${fmtUSD(max[1], lang)}`);
     el(chart, 'circle', { cx: X(last[0]), cy: Y(last[1]), r: 5, class: 'last' });
     // last price: above or below its point, on the side where the curve passes less (the label is ~150 wide)
     const near = pts.filter((p) => X(p[0]) > X(last[0]) - 160).map((p) => Y(p[1]));
     const above = Y(last[1]) - 14, below = Math.min(B - 8, Y(last[1]) + 26);
     const hits = (y) => near.filter((v) => v > y - 18 && v < y + 6).length;
-    el(chart, 'text', { x: X(last[0]) - 8, y: above > T + 30 && hits(above) <= hits(below) ? above : below, class: 'lbl ok', 'text-anchor': 'end' }, `${fmtDate(last[0], lang)} · ${fmtEUR(last[1], lang)}`);
+    el(chart, 'text', { x: X(last[0]) - 8, y: above > T + 30 && hits(above) <= hits(below) ? above : below, class: 'lbl ok', 'text-anchor': 'end' }, `${fmtDate(last[0], lang)} · ${fmtUSD(last[1], lang)}`);
     el(chart, 'text', { x: L, y: 22, class: 'ttl' }, `${current.name} · ${current.set} — ${t('tr.trend')}`);
     if (!reduced()) for (const [i, p] of lines.entries()) {
       const len = p.getTotalLength();
@@ -82,20 +82,22 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     }
   }
 
-  // Pipeline sketch: calls leave the API, ~37 % fail and are retried, rejects go to quarantine, the rest lands in the warehouse.
+  // Pipeline sketch: calls leave the catalogue API, ~37 % fail and are retried, rejects go to quarantine, the rest lands in the warehouse.
   let gen = 0; // one dot loop at a time, even after a language switch redraws the flow
   function renderFlow() {
     const my = ++gen;
     flow.replaceChildren();
     const nodes = [
-      ['api', 6, 'pokemontcg.io'], ['dag', 142, 'Airflow DAG'], ['stg', 278, 'staging'],
-      ['dwh', 414, t('tr.star')], ['out', 550, 'Metabase · React'],
+      ['api', 6, ['pokemontcg.io', 'TCGCSV']], ['dag', 142, 'Airflow DAG'], ['stg', 278, 'staging'],
+      ['dwh', 414, t('tr.star')], ['out', 550, 'dashboard'],
     ];
     const y = 46;
     const dots = el(flow, 'g'); // drawn first: the moving dots pass under the boxes and never cross their labels
     for (const [id, x, label] of nodes) {
       el(flow, 'rect', { x, y: y - 18, width: 124, height: 36, rx: 8, class: `node ${id === 'dwh' ? 'hot' : ''}` });
-      el(flow, 'text', { x: x + 62, y: y + 4, 'text-anchor': 'middle', class: 'nl small' }, label);
+      // a two-line label (catalogue source, price source) is centred on the box, 13 px apart
+      const lines = [label].flat();
+      for (const [i, s] of lines.entries()) el(flow, 'text', { x: x + 62, y: y + 4 + (i - (lines.length - 1) / 2) * 13, 'text-anchor': 'middle', class: 'nl small' }, s);
     }
     for (let i = 0; i < nodes.length - 1; i++) el(flow, 'path', { d: `M${nodes[i][1] + 124} ${y}H${nodes[i + 1][1]}`, class: 'edge' });
     el(flow, 'rect', { x: 278, y: 96, width: 124, height: 28, rx: 8, class: 'node q' });
