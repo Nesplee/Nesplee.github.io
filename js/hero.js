@@ -55,13 +55,13 @@ export function mountHero(h1, disc, onLangChange) {
     h1.style.removeProperty('--step');
     if (!matchMedia('(min-width: 701px)').matches) return;
     const em = parseFloat(getComputedStyle(h1).fontSize), bite = 0.9 * em, clear = 0.1 * em;
-    const measure = () => ({ d: disc.getBoundingClientRect(), rows: ['.s5', '.s4'].map((s) => box(h1.querySelector(s))), red: box(h1.querySelector('.s3')) });
+    const measure = () => ({ d: disc.getBoundingClientRect(), rows: ['.s4'].map((s) => box(h1.querySelector(s))), red: box(h1.querySelector('.s3')) });
     let m = measure();
     // on wide screens the circle curves more than one step: widen the step just enough (it stays regular)
     const i = m.rows.findIndex((r) => edgeAt(m.d, r) !== null);
     if (i >= 0) {
       const step = parseFloat(getComputedStyle(h1).getPropertyValue('--step')) * em;
-      const need = neededStep(m.d, m.rows[i], m.red, bite, clear, 2 - i);
+      const need = neededStep(m.d, m.rows[i], m.red, bite, clear, 1 - i);
       if (need > step) { h1.style.setProperty('--step', `${need}px`); m = measure(); }
     }
     h1.style.marginLeft = `${titleShift(m.d, m.rows, m.red, bite, clear)}px`;

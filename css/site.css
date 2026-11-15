@@ -462,11 +462,10 @@ section.proj[id] { scroll-margin-top: 20px; }
 .hero h1 { --step: .62em; width: max-content; max-width: 100%; justify-self: start; }
 .hero h1 br { display: none; }
 .hero h1 a, .hero h1 em { display: block; }
-.hero h1 .s0 { margin-left: calc(var(--step) * 5); }
-.hero h1 .s1 { margin-left: calc(var(--step) * 4); }
-.hero h1 .s2 { margin-left: calc(var(--step) * 3); }
-.hero h1 .s3 { margin-left: calc(var(--step) * 2); }
-.hero h1 .s4 { margin-left: calc(var(--step) * 1); }
+.hero h1 .s0 { margin-left: calc(var(--step) * 4); }
+.hero h1 .s1 { margin-left: calc(var(--step) * 3); }
+.hero h1 .s2 { margin-left: calc(var(--step) * 2); }
+.hero h1 .s3 { margin-left: calc(var(--step) * 1); }
 @media (max-width: 700px) { .hero h1 { --step: .32em; } }
 /* letters over the photo are drawn in paper (site/js/hero.js clips this copy of the title to the circle) */
 .hero h1 .over { position: absolute; inset: 0; color: var(--paper); pointer-events: none; user-select: none; }
@@ -476,7 +475,7 @@ section.proj[id] { scroll-margin-top: 20px; }
 /* tablet and desktop: photo on the left, the staircase of P words on the right, stepping away from the photo */
 @media (min-width: 701px) {
   .disc { grid-column: 1 / 6; justify-self: start; width: min(32vw, 440px, 58vh); }
-  .hero h1 { grid-column: 5 / -1; justify-self: start; font-size: clamp(40px, min(6.3vw, 11.2vh), 106px); --step: .74em; } /* 11.2vh: six lines fit a 768px-high screen */
+  .hero h1 { grid-column: 5 / -1; justify-self: start; font-size: clamp(40px, min(6.3vw, 11.2vh), 106px); --step: .74em; } /* 11.2vh: the lines fit a 768px-high screen */
 }
 
 /* chapter words: each part of the page opens with its P word from the hero title */
