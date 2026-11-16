@@ -1,6 +1,6 @@
-import { el, reduced, fmtUSD, fmtPct, fmtDate, fmtDay } from './svg.js?v=328ed42e02';
-import { splitGaps, change } from './series.js?v=328ed42e02';
-import { getJson } from './data.js?v=328ed42e02';
+import { el, reduced, fmtUSD, fmtPct, fmtDate, fmtDay } from './svg.js?v=ded31e8faf';
+import { splitGaps, change } from './series.js?v=ded31e8faf';
+import { getJson } from './data.js?v=ded31e8faf';
 
 // Real TCGplayer prices (mid, USD) exported from the owner's tracker API (data/tracker.json),
 // plus an animated sketch of the pipeline described in the card-price-tracker README.

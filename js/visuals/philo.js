@@ -1,6 +1,6 @@
-import { stateAt } from './philo-state.js?v=328ed42e02';
-import { el, reduced, fmtDay } from './svg.js?v=328ed42e02';
-import { getJson } from './data.js?v=328ed42e02';
+import { stateAt } from './philo-state.js?v=ded31e8faf';
+import { el, reduced, fmtDay } from './svg.js?v=ded31e8faf';
+import { getJson } from './data.js?v=ded31e8faf';
 
 // Replays a real run of the owner's philo binary (recordings/philo-*.json): table, forks held, meals,
 // and the very lines the program printed, in time.

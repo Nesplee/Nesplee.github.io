@@ -1,4 +1,4 @@
-import { canPlay, detectEnv } from './game-env.js?v=328ed42e02';
+import { canPlay, detectEnv } from './game-env.js?v=ded31e8faf';
 
 // A poster until the visitor clicks "Play"; then the owner's game (WebAssembly) in an iframe.
 // Keys reach the game only while its iframe has focus, so scrolling the page never moves the player.

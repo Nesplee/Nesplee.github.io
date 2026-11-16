@@ -1,4 +1,4 @@
-import { el, NS, reduced } from './svg.js?v=328ed42e02';
+import { el, NS, reduced } from './svg.js?v=ded31e8faf';
 
 // Kepler bento: illustrative animations, one per mission tile. No real data, no internal names.
 export function mount(root, { t, onLangChange, currentLang }) {
