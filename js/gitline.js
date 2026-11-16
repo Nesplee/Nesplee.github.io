@@ -1,7 +1,7 @@
 // The guiding line drawn as a git history: `main` runs down the left gutter, and each part of the page
 // (the sections that open with a chapter word) forks a branch at its start and merges back at its end.
 // Everything is grey; red fills main and the branches down to the reading position (60% of the viewport).
-import { fillHeight } from './line.js?v=4cabb152fe';
+import { fillHeight } from './line.js?v=561d3767ab';
 
 const NS = 'http://www.w3.org/2000/svg';
 
