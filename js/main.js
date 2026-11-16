@@ -1,10 +1,10 @@
-import { pickLang, applyLang } from './i18n.js?v=561d3767ab';
-import { revealContact } from './contact.js?v=561d3767ab';
-import { mountGitLine } from './gitline.js?v=561d3767ab';
-import { STRINGS } from './strings.js?v=561d3767ab';
-import { mountBoard } from './board.js?v=561d3767ab';
-import { mountHero } from './hero.js?v=561d3767ab';
-import { hit } from './count.js?v=561d3767ab';
+import { pickLang, applyLang } from './i18n.js?v=691aa6b196';
+import { revealContact } from './contact.js?v=691aa6b196';
+import { mountGitLine } from './gitline.js?v=691aa6b196';
+import { STRINGS } from './strings.js?v=691aa6b196';
+import { mountBoard } from './board.js?v=691aa6b196';
+import { mountHero } from './hero.js?v=691aa6b196';
+import { hit } from './count.js?v=691aa6b196';
 
 // GitHub Pages cannot send frame-ancestors / X-Frame-Options: refuse to be shown inside another site's frame
 try { if (window.top !== window.self && window.top.location.origin !== location.origin) throw 0; } catch { document.documentElement.hidden = true; }
@@ -52,7 +52,7 @@ const board = document.querySelector('.board');
 if (board) mountBoard(board);
 
 // Station visuals are loaded lazily, each in its own module (see stations.js).
-import('./stations.js?v=561d3767ab').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
+import('./stations.js?v=691aa6b196').then((m) => m.mountStations({ t, onLangChange, currentLang })).catch(() => {});
 
 
 // the hero CV link follows the page language

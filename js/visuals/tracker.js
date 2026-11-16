@@ -1,6 +1,6 @@
-import { el, reduced, fmtUSD, fmtPct, fmtDate, fmtDay } from './svg.js?v=561d3767ab';
-import { splitGaps, change } from './series.js?v=561d3767ab';
-import { getJson } from './data.js?v=561d3767ab';
+import { el, reduced, fmtUSD, fmtPct, fmtDate, fmtDay } from './svg.js?v=691aa6b196';
+import { splitGaps, change } from './series.js?v=691aa6b196';
+import { getJson } from './data.js?v=691aa6b196';
 
 // Real TCGplayer prices (mid, USD) exported from the owner's tracker API (data/tracker.json),
 // plus an animated sketch of the pipeline described in the card-price-tracker README.
@@ -43,9 +43,12 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     }));
   }
 
+  let geo = null; // scales of the chart on screen, read by the pointer handlers below
+
   function renderChart() {
     const lang = currentLang(), pts = current.points;
     chart.replaceChildren();
+    geo = null;
     const L = 56, R = 624, T = 40, B = 262; // the dates sit under B and must stay inside the 300-high viewBox
     const vs = pts.map((p) => p[1]);
     const pad = (Math.max(...vs) - Math.min(...vs)) * 0.15 || 10;
@@ -74,6 +77,12 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     const hits = (y) => near.filter((v) => v > y - 18 && v < y + 6).length;
     el(chart, 'text', { x: X(last[0]) - 8, y: above > T + 30 && hits(above) <= hits(below) ? above : below, class: 'lbl ok', 'text-anchor': 'end' }, `${fmtDate(last[0], lang)} · ${fmtUSD(last[1], lang)}`);
     el(chart, 'text', { x: L, y: 22, class: 'ttl' }, `${current.name} · ${current.set} — ${t('tr.trend')}`);
+    // hover / touch: vertical guide, dot and the price of the day under the pointer
+    const hov = el(chart, 'g', { class: 'hov', display: 'none' });
+    el(hov, 'line', { y1: T, y2: B, class: 'cross' });
+    el(hov, 'circle', { r: 5, class: 'hovdot' });
+    el(hov, 'text', { class: 'lbl hovlbl' });
+    geo = { pts, X, Y, L, R, T, B, hov, lang };
     if (!reduced()) for (const [i, p] of lines.entries()) {
       const len = p.getTotalLength();
       p.style.strokeDasharray = len; p.style.strokeDashoffset = len;
@@ -82,42 +91,57 @@ export async function mount(el0, { t, onLangChange, currentLang }) {
     }
   }
 
-  // Pipeline sketch: calls leave the catalogue API, ~37 % fail and are retried, rejects go to quarantine, the rest lands in the warehouse.
-  let gen = 0; // one dot loop at a time, even after a language switch redraws the flow
+  function showHover(e) {
+    if (!geo) return;
+    const m = chart.getScreenCTM();
+    if (!m) return;
+    const pt = chart.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    const x = pt.matrixTransform(m.inverse()).x;
+    const { pts, X, Y, L, R, T, hov, lang } = geo;
+    let best = pts[0];
+    for (const p of pts) if (Math.abs(X(p[0]) - x) < Math.abs(X(best[0]) - x)) best = p;
+    const bx = X(best[0]), by = Y(best[1]);
+    if (x < L - 6 || x > R + 6 || Math.abs(bx - x) > 14) { hov.setAttribute('display', 'none'); chart.classList.remove('is-hov'); return; } // outside the curve or in a data gap
+    const [ln, dot, lbl] = hov.children;
+    ln.setAttribute('x1', bx); ln.setAttribute('x2', bx);
+    dot.setAttribute('cx', bx); dot.setAttribute('cy', by);
+    lbl.textContent = `${fmtDate(best[0], lang)} · ${fmtUSD(best[1], lang)}`;
+    lbl.setAttribute('x', bx); lbl.setAttribute('y', by - 14 > T + 12 ? by - 14 : by + 26);
+    lbl.setAttribute('text-anchor', bx < L + 80 ? 'start' : bx > R - 80 ? 'end' : 'middle');
+    hov.setAttribute('display', 'inline'); chart.classList.add('is-hov');
+  }
+  const hideHover = () => { geo?.hov.setAttribute('display', 'none'); chart.classList.remove('is-hov'); };
+  chart.addEventListener('pointermove', showHover);
+  chart.addEventListener('pointerdown', showHover);
+  chart.addEventListener('pointerleave', hideHover);
+
+  // Pipeline sketch (static): catalogue and price sources -> Airflow -> staging -> star schema -> dashboard;
+  // failed calls loop back to the sources for a retry, rejected rows go to quarantine.
   function renderFlow() {
-    const my = ++gen;
     flow.replaceChildren();
+    const defs = el(flow, 'defs');
+    const mk = el(defs, 'marker', { id: 'tr-arrow', viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' });
+    el(mk, 'path', { d: 'M0 0L10 5L0 10z', class: 'arrow' });
+    const W = 110, H = 40, gap = 30, y = 74; // box centre line
     const nodes = [
-      ['api', 6, ['pokemontcg.io', 'TCGCSV']], ['dag', 142, 'Airflow DAG'], ['stg', 278, 'staging'],
-      ['dwh', 414, t('tr.star')], ['out', 550, 'dashboard'],
-    ];
-    const y = 46;
-    const dots = el(flow, 'g'); // drawn first: the moving dots pass under the boxes and never cross their labels
-    for (const [id, x, label] of nodes) {
-      el(flow, 'rect', { x, y: y - 18, width: 124, height: 36, rx: 8, class: `node ${id === 'dwh' ? 'hot' : ''}` });
-      // a two-line label (catalogue source, price source) is centred on the box, 13 px apart
+      ['api', ['pokemontcg.io', 'TCGCSV']], ['dag', 'Airflow DAG'], ['stg', 'staging'],
+      ['dwh', t('tr.star')], ['out', 'dashboard'],
+    ].map(([id, label], i) => ({ id, label, x: 4 + i * (W + gap) }));
+    for (let i = 0; i < nodes.length - 1; i++) el(flow, 'path', { d: `M${nodes[i].x + W + 2} ${y}H${nodes[i + 1].x - 3}`, class: 'edge', 'marker-end': 'url(#tr-arrow)' });
+    for (const { id, label, x } of nodes) {
+      el(flow, 'rect', { x, y: y - H / 2, width: W, height: H, rx: 8, class: `node ${id === 'dwh' ? 'hot' : ''}` });
       const lines = [label].flat();
-      for (const [i, s] of lines.entries()) el(flow, 'text', { x: x + 62, y: y + 4 + (i - (lines.length - 1) / 2) * 13, 'text-anchor': 'middle', class: 'nl small' }, s);
+      for (const [i, s] of lines.entries()) el(flow, 'text', { x: x + W / 2, y: y + 4 + (i - (lines.length - 1) / 2) * 13, 'text-anchor': 'middle', class: 'nl small' }, s);
     }
-    for (let i = 0; i < nodes.length - 1; i++) el(flow, 'path', { d: `M${nodes[i][1] + 124} ${y}H${nodes[i + 1][1]}`, class: 'edge' });
-    el(flow, 'rect', { x: 278, y: 96, width: 124, height: 28, rx: 8, class: 'node q' });
-    el(flow, 'text', { x: 340, y: 114, 'text-anchor': 'middle', class: 'nl' }, t('tr.quarantine'));
-    el(flow, 'path', { d: `M340 ${y + 18}V96`, class: 'edge' });
-    el(flow, 'path', { d: `M142 ${y - 10}C116 6 92 6 68 ${y - 18}`, class: 'edge retry' });
-    el(flow, 'text', { x: 105, y: 10, 'text-anchor': 'middle', class: 'nl small' }, t('tr.retry'));
-    if (reduced()) return;
-    const spawn = () => {
-      if (my !== gen) return;
-      const box = flow.getBoundingClientRect();
-      if (document.hidden || box.bottom < 0 || box.top > innerHeight) { setTimeout(spawn, 500); return; } // idle off-screen
-      const r = Math.random(), kind = r < 0.37 ? 'retry' : r < 0.43 ? 'q' : 'ok';
-      const c = el(dots, 'circle', { r: 4, cx: 120, cy: y, class: `dot ${kind}` });
-      const path = kind === 'retry' ? [[142, y], [142, y - 10], [68, y - 18]] : kind === 'q' ? [[278, y], [340, y], [340, 110]] : [[278, y], [414, y], [550, y], [660, y]];
-      const keyframes = [{ cx: 120, cy: y }, ...path.map(([cx, cy]) => ({ cx, cy }))].map((p) => ({ transform: `translate(${p.cx - 120}px, ${p.cy - y}px)` }));
-      c.animate(keyframes, { duration: 2200, easing: 'linear' }).onfinish = () => c.remove();
-      setTimeout(spawn, 260);
-    };
-    spawn();
+    // quarantine: under staging
+    const stg = nodes[2];
+    el(flow, 'path', { d: `M${stg.x + W / 2} ${y + H / 2 + 2}V${y + 40}`, class: 'edge', 'marker-end': 'url(#tr-arrow)' });
+    el(flow, 'rect', { x: stg.x, y: y + 42, width: W, height: 28, rx: 8, class: 'node q' });
+    el(flow, 'text', { x: stg.x + W / 2, y: y + 60, 'text-anchor': 'middle', class: 'nl' }, t('tr.quarantine'));
+    // retry: from the DAG back to the sources, above the row
+    const a = nodes[1].x + W / 2, b = nodes[0].x + W / 2, top = y - H / 2 - 2;
+    el(flow, 'path', { d: `M${a} ${top}C${a} ${top - 46} ${b} ${top - 46} ${b} ${top}`, class: 'edge retry', 'marker-end': 'url(#tr-arrow)' });
+    el(flow, 'text', { x: (a + b) / 2, y: 14, 'text-anchor': 'middle', class: 'nl small' }, `~37 % · ${t('tr.retry')}`);
   }
 
   renderTabs(); renderChart(); renderFlow();

@@ -193,6 +193,11 @@ a.repo:hover { color: var(--red); }
 [data-tr="chart"] .grid { stroke: #2a2a2a; }
 [data-tr="chart"] .area { fill: var(--hot); fill-opacity: .12; }
 [data-tr="chart"] .line { fill: none; stroke: var(--hot); stroke-width: 3; stroke-linejoin: round; }
+[data-tr="chart"] .cross { stroke: #8a8a8a; stroke-dasharray: 3 3; }
+[data-tr="chart"] .hovdot { fill: var(--screen-ink); stroke: var(--screen); stroke-width: 2; }
+[data-tr="chart"] .hov { pointer-events: none; }
+[data-tr="chart"].is-hov text.lbl:not(.hovlbl) { opacity: 0; } /* peak and last-price labels step aside while the pointer reads a price */
+[data-tr="chart"] { touch-action: pan-x pan-y; }
 [data-tr="chart"] .peak { fill: var(--screen-ink); }
 [data-tr="chart"] .last { fill: var(--ok); }
 [data-tr="chart"] text.lbl { paint-order: stroke; stroke: var(--screen); stroke-width: 6px; stroke-linejoin: round; }
@@ -202,9 +207,9 @@ a.repo:hover { color: var(--red); }
 .flow-svg .node.hot { stroke: var(--red); stroke-width: 2; }
 .flow-svg .node.q { stroke: #7a5a2a; stroke-dasharray: 4 3; }
 .flow-svg text.nl { fill: var(--screen-ink); }
-.flow-svg .edge { fill: none; stroke: #3a3a3a; stroke-width: 2; }
+.flow-svg .edge { fill: none; stroke: #6a6a6a; stroke-width: 1.5; }
 .flow-svg .edge.retry { stroke-dasharray: 4 4; }
-.flow-svg .dot.ok { fill: var(--ok); } .flow-svg .dot.retry { fill: var(--hot); } .flow-svg .dot.q { fill: #d9a520; }
+.flow-svg .arrow { fill: #7a7a7a; }
 
 /* philosophers */
 .ph-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
